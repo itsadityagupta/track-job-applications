@@ -19,3 +19,13 @@ class DBFunctions:
         else:
             logger.error("No db session found!")
             # TODO: throw relevant exception
+
+    def get_all_applications(self):
+        """Queries database to get all the job applications"""
+
+        if self.db.session:
+            return self.db.session.query(JobApplication).all()
+        else:
+            logger.error("No db session found!")
+        # TODO: Another way is to return only job ids. But check if it's feasible
+        # TODO: throw relevant exception
