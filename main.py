@@ -3,6 +3,7 @@ from datetime import datetime
 
 import typer
 
+from app_functions import print_applications
 from database import Database
 from datamodels.job_application import JobApplication
 from db_functions import DBFunctions
@@ -34,6 +35,13 @@ def add(
         applied_at=applied_at,
     )
     db_functions.add_job_application(application)
+
+
+@app.command()
+def ls():
+    """Prints all the job applications present in the database"""
+    applications = db_functions.get_all_applications()
+    print_applications(applications)
 
 
 if __name__ == "__main__":
