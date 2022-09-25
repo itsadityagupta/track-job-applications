@@ -18,7 +18,7 @@ db_functions = DBFunctions(db)
 def add(
     company: str = typer.Argument(..., help="Company applied to"),
     position: str = typer.Argument(..., help="Position applied for"),
-    date_applied: str = typer.Argument(
+    applied_at: str = typer.Argument(
         datetime.now().strftime("%x"), help="Date applied at [MM/DD/YY]"
     ),
     status: str = typer.Argument(
@@ -31,7 +31,7 @@ def add(
         company=company,
         position=position,
         status=status,
-        applied_at=date_applied,
+        applied_at=applied_at,
     )
     db_functions.add_job_application(application)
 
