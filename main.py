@@ -2,6 +2,7 @@ import os
 from datetime import datetime
 
 import typer
+from rich import print as rprint
 
 from app_functions import print_applications
 from database import Database
@@ -42,6 +43,13 @@ def ls():
     """Prints all the job applications present in the database"""
     applications = db_functions.get_all_applications()
     print_applications(applications)
+
+
+@app.command()
+def rm(application_id: int):
+    """Deletes the job application with the given id"""
+    db_functions.delete_job_application(application_id)
+    rprint(f"Job application [{application_id}] deleted.")
 
 
 if __name__ == "__main__":
