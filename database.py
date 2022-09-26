@@ -41,9 +41,10 @@ class Database:
 
     def create_db(self, db_path: str, echo: bool):
         """Main function to create the database"""
-
+        # TODO: use less lines of code
         if os.path.isfile(db_path):
             self.create_engine(echo)
+            Base.metadata.create_all(self.engine)
             logger.info("Database already created.")
             # TODO: Add option to delete the file and recreate the DB (force create)
         else:
