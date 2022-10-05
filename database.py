@@ -4,9 +4,9 @@ import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from app_functions import get_conn_string
 from datamodels.job_application import Base
 from logger import logger
+from shared.app_functions import get_conn_string
 
 Session = sessionmaker()
 

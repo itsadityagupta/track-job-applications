@@ -1,19 +1,16 @@
-import os
 from datetime import datetime
 
 import typer
 from rich import print as rprint
 
-from app_functions import print_applications
-from database import Database
+import update
 from datamodels.job_application import JobApplication
-from db_functions import DBFunctions
+from shared.app_functions import print_applications
+from shared.dao import db_functions
 
 app = typer.Typer()
 
-db_path = os.path.join(os.path.dirname(os.path.realpath(__file__)), "site.db")
-db = Database(db_path)
-db_functions = DBFunctions(db)
+app.add_typer(update.app, name="update")
 
 
 @app.command()
@@ -46,7 +43,11 @@ def ls():
 
 
 @app.command()
-def rm(application_id: int):
+def rm(
+    application_id: int = typer.Argument(
+        ..., help="ID for job application you want to delete"
+    )
+):
     """Deletes the job application with the given id"""
     db_functions.delete_job_application(application_id)
     rprint(f"Job application [{application_id}] deleted.")
