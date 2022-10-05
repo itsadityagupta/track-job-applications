@@ -42,3 +42,47 @@ class DBFunctions:
             self.db.session.commit()
         else:
             logger.error("No db session found!")
+
+    def update_company(self, application_id: int, company: str):
+        """Updates the company name in the application with the given ID"""
+
+        if self.db.session:
+            self.db.session.query(JobApplication).filter(
+                JobApplication.id == application_id
+            ).update({"company": company})
+            self.db.session.commit()
+        else:
+            logger.error("No db session found!")
+
+    def update_position(self, application_id: int, position: str):
+        """Updates the position in the application with the given ID"""
+
+        if self.db.session:
+            self.db.session.query(JobApplication).filter(
+                JobApplication.id == application_id
+            ).update({"position": position})
+            self.db.session.commit()
+        else:
+            logger.error("No db session found!")
+
+    def update_status(self, application_id: int, status: str):
+        """Updates the status of the application with the given ID"""
+
+        if self.db.session:
+            self.db.session.query(JobApplication).filter(
+                JobApplication.id == application_id
+            ).update({"status": status})
+            self.db.session.commit()
+        else:
+            logger.error("No db session found!")
+
+    def update_applied_at_date(self, application_id: int, applied_at: str):
+        """Updates the applied_at date in the application with the given ID"""
+
+        if self.db.session:
+            self.db.session.query(JobApplication).filter(
+                JobApplication.id == application_id
+            ).update({"applied_at": applied_at})
+            self.db.session.commit()
+        else:
+            logger.error("No db session found!")
