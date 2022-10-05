@@ -10,7 +10,9 @@ from shared.dao import db_functions
 
 app = typer.Typer()
 
-app.add_typer(update.app, name="update")
+app.add_typer(
+    update.app, name="update", help="Updates the job application details"
+)
 
 
 @app.command()
