@@ -9,6 +9,7 @@ applied to.
 ![Open Issues](https://img.shields.io/github/issues/Aditya-Gupta1/job-application-cli?color=dark-green&style=flat-square)
 ![Good First Issues](https://img.shields.io/github/issues/Aditya-Gupta1/job-application-cli/good%20first%20issue?color=blue&style=flat-square)
 ![Hacktoberfest Issues](https://img.shields.io/github/issues/Aditya-Gupta1/job-application-cli/hacktoberfest?color=cyan&style=flat-square)
+![Interrogate](interrogate_badge.svg)
 
 ## Motivation
 
