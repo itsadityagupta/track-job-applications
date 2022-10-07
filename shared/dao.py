@@ -1,6 +1,6 @@
 import os
 
-from database import Database
+from shared.database import Database
 from shared.db_functions import DBFunctions
 
 db_path = os.path.join(

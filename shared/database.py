@@ -52,8 +52,3 @@ class Database:
             self.create_engine(echo)
             Base.metadata.create_all(self.engine)
             logger.info(f"Database created at {db_path}.")
-
-
-# if __name__ == "__main__":
-#     path = os.path.join(os.path.dirname(os.path.realpath(__file__)), 'site.db')
-#     obj = Database(path)

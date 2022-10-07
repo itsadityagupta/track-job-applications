@@ -1,6 +1,6 @@
-from database import Database
 from datamodels.job_application import JobApplication
 from logger import logger
+from shared.database import Database
 
 
 class DBFunctions:
