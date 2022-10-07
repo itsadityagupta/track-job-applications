@@ -1,7 +1,7 @@
 import os
 
 from database import Database
-from db_functions import DBFunctions
+from shared.db_functions import DBFunctions
 
 db_path = os.path.join(
     os.path.dirname(os.path.realpath(__file__)), "../site.db"
