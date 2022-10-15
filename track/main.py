@@ -3,10 +3,10 @@ from datetime import datetime
 import typer
 from rich import print as rprint
 
-import update
-from datamodels.job_application import JobApplication
-from shared.app_functions import print_applications
-from shared.dao import db_functions
+from track import update
+from track.app_functions import print_applications
+from track.dao import db_functions
+from track.job_application import JobApplication
 
 app = typer.Typer()
 
@@ -19,11 +19,11 @@ app.add_typer(
 def add(
     company: str = typer.Argument(..., help="Company applied to"),
     position: str = typer.Argument(..., help="Position applied for"),
-    applied_at: str = typer.Argument(
-        datetime.now().strftime("%x"), help="Date applied at [MM/DD/YY]"
-    ),
     status: str = typer.Argument(
         "Applied", help="Current status of the application"
+    ),
+    applied_at: str = typer.Argument(
+        datetime.now().strftime("%x"), help="Date applied at [MM/DD/YY]"
     ),
 ):
     """Add job application details"""
@@ -55,5 +55,6 @@ def rm(
     rprint(f"Job application [{application_id}] deleted.")
 
 
-if __name__ == "__main__":
+def entry():
+    """Starting point for the application"""
     app()

@@ -16,8 +16,8 @@ def print_applications(applications):
     table.add_column("ID", style="cyan")
     table.add_column("Company", style="magenta")
     table.add_column("Position")
-    table.add_column("Applied at")
     table.add_column("Status")
+    table.add_column("Applied at")
     table.add_column("Updated at")
 
     for application in applications:
@@ -25,8 +25,8 @@ def print_applications(applications):
             str(application.id),  # int is not renderable in rich
             application.company,
             application.position,
-            application.applied_at,
             application.status,
+            application.applied_at,
             application.updated_at,
         )
 

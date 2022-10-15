@@ -1,6 +1,6 @@
-from datamodels.job_application import JobApplication
-from logger import logger
-from shared.database import Database
+from track.database import Database
+from track.job_application import JobApplication
+from track.logger import logger
 
 
 class DBFunctions:

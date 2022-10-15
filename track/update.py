@@ -1,6 +1,6 @@
 import typer
 
-from shared.dao import db_functions
+from track.dao import db_functions
 
 app = typer.Typer()
 

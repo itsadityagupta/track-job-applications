@@ -4,9 +4,9 @@ import sqlite3
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-from datamodels.job_application import Base
-from logger import logger
-from shared.app_functions import get_conn_string
+from track.app_functions import get_conn_string
+from track.job_application import Base
+from track.logger import logger
 
 Session = sessionmaker()
 
@@ -14,7 +14,7 @@ Session = sessionmaker()
 class Database:
     """Initializes database connection"""
 
-    def __init__(self, db_path: str, echo: bool = True):
+    def __init__(self, db_path: str, echo: bool = False):
         self.conn = None
         self.engine = None
         self.connection_string = get_conn_string(db_path)
