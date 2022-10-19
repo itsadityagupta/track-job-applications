@@ -9,6 +9,14 @@ class DBFunctions:
     def __init__(self, db: Database):
         self.db = db
 
+    def total_applications(self):
+        """Returns total number of applications for all time"""
+        if self.db.session:
+            return self.db.session.query(JobApplication).count()
+        else:
+            logger.error("No db session found!")
+            # TODO: throw relevant exception
+
     def add_job_application(self, application: JobApplication):
         """Add a job application to the database"""
 

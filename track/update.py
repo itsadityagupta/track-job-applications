@@ -1,6 +1,6 @@
 import typer
 
-from track.dao import db_functions
+from track.dao import db_service
 
 app = typer.Typer()
 
@@ -13,7 +13,7 @@ def company(
     company_name: str = typer.Argument(..., help="Company name"),
 ):
     """Updates the company name in the application with the given ID"""
-    db_functions.update_company(application_id, company_name)
+    db_service.update_company(application_id, company_name)
 
 
 @app.command()
@@ -24,7 +24,7 @@ def position(
     position_name: str = typer.Argument(..., help="Position applied for"),
 ):
     """Updates the position in the application with the given ID"""
-    db_functions.update_position(application_id, position_name)
+    db_service.update_position(application_id, position_name)
 
 
 @app.command()
@@ -35,7 +35,7 @@ def status(
     status_name: str = typer.Argument(..., help="Status of the application"),
 ):
     """Updates the status of the application with the given ID"""
-    db_functions.update_status(application_id, status_name)
+    db_service.update_status(application_id, status_name)
 
 
 @app.command()
@@ -48,4 +48,4 @@ def applied_at(
     ),
 ):
     """Updates the applied_at date in the application with the given ID"""
-    db_functions.update_applied_at_date(application_id, applied_at_value)
+    db_service.update_applied_at_date(application_id, applied_at_value)

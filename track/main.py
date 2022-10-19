@@ -4,9 +4,8 @@ from typing import Optional
 import typer
 from rich import print as rprint
 
-from track import __app_name__, __version__, update
-from track.app_functions import print_applications
-from track.dao import db_functions
+from track import __app_name__, __version__, app_functions, metrics, update
+from track.dao import db_service
 from track.job_application import JobApplication
 
 app = typer.Typer()
@@ -57,14 +56,14 @@ def add(
         status=status,
         applied_at=applied_at,
     )
-    db_functions.add_job_application(application)
+    db_service.add_job_application(application)
 
 
 @app.command()
 def ls():
     """Prints all the job applications present in the database"""
-    applications = db_functions.get_all_applications()
-    print_applications(applications)
+    applications = db_service.get_all_applications()
+    app_functions.print_applications(applications)
 
 
 @app.command()
@@ -74,8 +73,14 @@ def rm(
     )
 ):
     """Deletes the job application with the given id"""
-    db_functions.delete_job_application(application_id)
+    db_service.delete_job_application(application_id)
     rprint(f"Job application [{application_id}] deleted.")
+
+
+@app.command()
+def report():
+    """Generate a report of default metrics"""
+    metrics.generate_report()
 
 
 def entry():
