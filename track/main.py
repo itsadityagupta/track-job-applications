@@ -5,6 +5,7 @@ import typer
 from rich import print as rprint
 
 from track import __app_name__, __version__, app_functions, report, update
+from track.app_constants import Status
 from track.dao import db_service
 from track.job_application import JobApplication
 
@@ -48,7 +49,7 @@ def add(
         help="Date applied at [YYYY-MM-DD]",
     ),
     status: str = typer.Argument(
-        "Applied", help="Current status of the application"
+        "APPLIED", help="Current status of the application"
     ),
 ):
     """Add job application details"""
@@ -57,7 +58,7 @@ def add(
     application = JobApplication(
         company=company,
         position=position,
-        status=status,
+        status=Status.from_string(status).value,  # validate the given status
         applied_at=applied_at,
     )
     db_service.add_job_application(application)
@@ -68,6 +69,7 @@ def ls():
     """Prints all the job applications present in the database"""
     applications = db_service.get_all_applications()
     app_functions.print_applications(applications)
+    # TODO: add start and end date along with the status (to filter with the given status)
 
 
 @app.command()

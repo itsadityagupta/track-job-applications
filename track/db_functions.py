@@ -1,6 +1,7 @@
 from typing import Optional
 
 from track import app_functions
+from track.app_constants import Status
 from track.database import Database
 from track.job_application import JobApplication
 from track.logger import logger
@@ -92,13 +93,13 @@ class DBFunctions:
         else:
             logger.error("No db session found!")
 
-    def update_status(self, application_id: int, status: str):
+    def update_status(self, application_id: int, status: Status):
         """Updates the status of the application with the given ID"""
 
         if self.db.session:
             self.db.session.query(JobApplication).filter(
                 JobApplication.id == application_id
-            ).update({"status": status})
+            ).update({"status": status.value})
             self.db.session.commit()
         else:
             logger.error("No db session found!")
@@ -112,5 +113,54 @@ class DBFunctions:
                 JobApplication.id == application_id
             ).update({"applied_at": applied_at})
             self.db.session.commit()
+        else:
+            logger.error("No db session found!")
+
+    def get_applications_by_status(
+        self,
+        status: Status,
+        start_date: Optional[str] = None,
+        end_date: Optional[str] = None,
+        counts: bool = True,
+    ):
+        """Get the application counts for the given status and given date"""
+
+        if self.db.session:
+            if start_date is not None and end_date is not None:
+                start_date = app_functions.parse_date(start_date)
+                end_date = app_functions.parse_date(end_date)
+                if counts:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status == status.value,
+                            start_date <= JobApplication.updated_at,
+                            JobApplication.updated_at <= end_date,
+                        )
+                        .count()
+                    )
+                else:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status == status.value,
+                            start_date <= JobApplication.updated_at,
+                            JobApplication.updated_at <= end_date,
+                        )
+                        .all()
+                    )
+            elif start_date is None and end_date is None:
+                if counts:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(JobApplication.status == status.value)
+                        .count()
+                    )
+                else:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(JobApplication.status == status.value)
+                        .all()
+                    )
         else:
             logger.error("No db session found!")

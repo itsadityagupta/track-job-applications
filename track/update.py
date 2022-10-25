@@ -1,5 +1,6 @@
 import typer
 
+from track.app_constants import Status
 from track.dao import db_service
 
 app = typer.Typer()
@@ -35,7 +36,7 @@ def status(
     status_name: str = typer.Argument(..., help="Status of the application"),
 ):
     """Updates the status of the application with the given ID"""
-    db_service.update_status(application_id, status_name)
+    db_service.update_status(application_id, Status.from_string(status_name))
 
 
 @app.command()

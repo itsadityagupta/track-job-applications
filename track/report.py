@@ -31,5 +31,21 @@ def total(
 ):
     """Get the total number of applications within a given date range"""
     rprint(
-        f"Total Applications: {metrics.num_of_applications(start_date, end_date)}"
+        f"# of applications: {metrics.num_of_applications(start_date, end_date)}"
+    )
+
+
+@app.command()
+def status(
+    status: str = typer.Argument(..., help="Status of the application"),
+    start_date: Optional[str] = typer.Argument(
+        None, help="Start counting the applications from this date"
+    ),
+    end_date: Optional[str] = typer.Argument(
+        None, help="Count the applications made till this date"
+    ),
+):
+    """Get the counts of application for the given status in the given time range"""
+    rprint(
+        f"# of applications with status '{status}': {metrics.applications_by_status_count(status, start_date, end_date)}"
     )
