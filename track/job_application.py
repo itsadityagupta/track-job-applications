@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Date, DateTime, Integer, String
 from sqlalchemy.orm import declarative_base
 
 Base = declarative_base()
@@ -14,12 +14,6 @@ class JobApplication(Base):
     company = Column(String(), nullable=False)
     position = Column(String(), nullable=False)
     status = Column(String(), nullable=False)
-    applied_at = Column(
-        String(), nullable=False, default=datetime.now().strftime("%x")
-    )
-    created_at = Column(
-        String(), nullable=False, default=datetime.now().strftime("%x")
-    )
-    updated_at = Column(
-        String(), nullable=False, default=datetime.now().strftime("%x")
-    )
+    applied_at = Column(Date(), nullable=False)
+    created_at = Column(Date(), nullable=False, default=datetime.now().date())
+    updated_at = Column(Date(), nullable=False, default=datetime.now().date())

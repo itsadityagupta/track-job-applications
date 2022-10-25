@@ -24,14 +24,14 @@ And actually there's a lot we can do with this data! It can be used to answer qu
 - What companies rejected my profile?
 - In how many companies have I given 2 rounds of tech interviews?
 - In how many HR rounds I got rejected?
-- How many offers do I have? *Though you won't forget this :wink: )*
+- How many offers do I have? *Though you won't forget this one :wink:*
 
 And the list goes on.
 
 ## Installation
 
 You need to have [Python](https://www.python.org/downloads/) installed on your system as a prerequisite.
-If it is already installed, run the following command:
+If it's already installed, run the following command:
 
 ```cmd
 pip install track-job-applications

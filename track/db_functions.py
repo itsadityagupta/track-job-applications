@@ -1,3 +1,6 @@
+from typing import Optional
+
+from track import app_functions
 from track.database import Database
 from track.job_application import JobApplication
 from track.logger import logger
@@ -9,10 +12,26 @@ class DBFunctions:
     def __init__(self, db: Database):
         self.db = db
 
-    def total_applications(self):
+    def total_applications(
+        self, start_date: Optional[str] = None, end_date: Optional[str] = None
+    ):
         """Returns total number of applications for all time"""
         if self.db.session:
-            return self.db.session.query(JobApplication).count()
+            if start_date is None and end_date is None:
+                return self.db.session.query(JobApplication).count()
+
+            elif start_date is not None and end_date is not None:
+
+                start_date = app_functions.parse_date(start_date)
+                end_date = app_functions.parse_date(end_date)
+                return (
+                    self.db.session.query(JobApplication)
+                    .filter(
+                        start_date <= JobApplication.updated_at,
+                        JobApplication.updated_at <= end_date,
+                    )
+                    .count()
+                )
         else:
             logger.error("No db session found!")
             # TODO: throw relevant exception

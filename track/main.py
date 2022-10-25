@@ -1,10 +1,10 @@
-from datetime import datetime
+from datetime import date, datetime
 from typing import Optional
 
 import typer
 from rich import print as rprint
 
-from track import __app_name__, __version__, app_functions, metrics, update
+from track import __app_name__, __version__, app_functions, report, update
 from track.dao import db_service
 from track.job_application import JobApplication
 
@@ -13,6 +13,8 @@ app = typer.Typer()
 app.add_typer(
     update.app, name="update", help="Updates the job application details"
 )
+
+app.add_typer(report.app, name="report", help="Reporting")
 
 
 def _version_callback(value: bool) -> None:
@@ -41,15 +43,17 @@ def get_version(
 def add(
     company: str = typer.Argument(..., help="Company applied to"),
     position: str = typer.Argument(..., help="Position applied for"),
+    applied_at: str = typer.Argument(
+        datetime.date(datetime.now()).isoformat(),
+        help="Date applied at [YYYY-MM-DD]",
+    ),
     status: str = typer.Argument(
         "Applied", help="Current status of the application"
-    ),
-    applied_at: str = typer.Argument(
-        datetime.now().strftime("%x"), help="Date applied at [MM/DD/YY]"
     ),
 ):
     """Add job application details"""
 
+    applied_at = app_functions.parse_date(applied_at)
     application = JobApplication(
         company=company,
         position=position,
@@ -75,12 +79,6 @@ def rm(
     """Deletes the job application with the given id"""
     db_service.delete_job_application(application_id)
     rprint(f"Job application [{application_id}] deleted.")
-
-
-@app.command()
-def report():
-    """Generate a report of default metrics"""
-    metrics.generate_report()
 
 
 def entry():
