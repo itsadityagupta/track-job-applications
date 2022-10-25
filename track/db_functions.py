@@ -107,6 +107,7 @@ class DBFunctions:
         """Updates the applied_at date in the application with the given ID"""
 
         if self.db.session:
+            applied_at = app_functions.parse_date(applied_at)
             self.db.session.query(JobApplication).filter(
                 JobApplication.id == application_id
             ).update({"applied_at": applied_at})

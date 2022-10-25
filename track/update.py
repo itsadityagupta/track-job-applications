@@ -43,9 +43,9 @@ def applied_at(
     application_id: int = typer.Argument(
         ..., help="ID for job application you want to update"
     ),
-    applied_at_value: str = typer.Argument(
+    new_date: str = typer.Argument(
         ..., help="Date at which applied for the application"
     ),
 ):
     """Updates the applied_at date in the application with the given ID"""
-    db_service.update_applied_at_date(application_id, applied_at_value)
+    db_service.update_applied_at_date(application_id, new_date)
