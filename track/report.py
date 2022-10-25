@@ -11,8 +11,8 @@ app = typer.Typer()
 @app.callback(invoke_without_command=True)
 def default(
     ctx: typer.Context,
-    start_date: Optional[str] = typer.Argument(None, help="start date"),
-    end_date: Optional[str] = typer.Argument(None, help="end date"),
+    start_date: Optional[str] = typer.Option(None, help="start date"),
+    end_date: Optional[str] = typer.Option(None, help="end date"),
 ):
     """Default report"""
     if ctx.invoked_subcommand is not None:
