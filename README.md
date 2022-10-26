@@ -11,6 +11,8 @@ applied to.
 ![Hacktoberfest Issues](https://img.shields.io/github/issues/Aditya-Gupta1/job-application-cli/hacktoberfest?color=cyan&style=flat-square)
 ![Interrogate](interrogate_badge.svg)
 
+> **Refer to the [publish](https://github.com/Aditya-Gupta1/track-job-applications/tree/publish) branch for the current progress of the project along with the updated code and the documentation**.
+
 ## Motivation
 
 We apply to hundreds of job openings when looking out for jobs, and often forget about
