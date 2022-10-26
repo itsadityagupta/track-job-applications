@@ -36,10 +36,34 @@ If it's already installed, run the following command:
 ```cmd
 pip install track-job-applications
 ```
+[Note: The app is still in development and not published to PyPI yet.]
 
 ## Quick Start
 
+```commandline
+// add a job application
+> track-job add CompanyX SDE-1
 
+// display all the applications
+> track-job ls
+
+// update the application details
+> track-job update company <application-id> <new company name>
+
+// know more about any command
+> track-job <command> --help
+
+// know about all the commands available
+> track-job --help
+
+// get a report on all the applications
+> track-job report
+
+// get report on all the applications made within a date range
+> track-job report <start date in YYYY-MM-DD> <end date in YYYY-MM-DD>
+```
+
+> :warning: Since the app is not published yet, you can follow the "[setting up the development environment steps](https://github.com/Aditya-Gupta1/track-job-applications/blob/publish/CONTRIBUTING.md#setting-up-the-development-environment)" and execute the above commands for testing the app functionality.
 
 ## Tech Stack
 
@@ -51,6 +75,6 @@ pip install track-job-applications
 
 Contributions are always welcome!
 
-See [CONTRIBUTING.md](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/CONTRIBUTING.md) for ways to get started.
+See [CONTRIBUTING.md](https://github.com/Aditya-Gupta1/track-job-applications/blob/publish/CONTRIBUTING.md) for ways to get started.
 
-Please adhere to this project's [CODE OF CONDUCT](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/CODE_OF_CONDUCT.md).
+Please adhere to this project's [CODE OF CONDUCT](https://github.com/Aditya-Gupta1/track-job-applications/blob/publish/CODE_OF_CONDUCT.md).

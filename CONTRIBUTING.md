@@ -10,7 +10,7 @@ Reading and following these guidelines will help us make the contribution proces
 * [Getting Started](#getting-started)
     * [Issues](#issues)
     * [Pull Requests](#pull-requests)
-* [Getting Help](#getting-help)
+* [Setting up the development environment](#setting-up-the-development-environment)
 
 ## Code of Conduct
 
@@ -50,6 +50,17 @@ In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susa
 6. Push changes to your fork
 7. Open a PR in our repository and follow the PR template so that we can efficiently review the changes.
 
-## Getting Help
+## Setting up the development environment
 
-TODO
+1. Install [Poetry](https://python-poetry.org/docs/#installation). Make sure to add it to the path as mentioned in the documentation.
+2. Run the following commands:
+```commandline
+git clone https://github.com/Aditya-Gupta1/track-job-applications.git
+cd track-job-applications
+git checkout publish
+poetry install
+poetry shell
+```
+3. Poetry will spin up a shell where all the commands for the application can be executed and tested.
+
+[Note: `publish` is the current development branch of the project for version 1.0.0 release]
