@@ -65,6 +65,18 @@ pip install track-job-applications
 
 > :warning: Since the app is not published yet, you can follow the "[setting up the development environment steps](https://github.com/Aditya-Gupta1/track-job-applications/blob/publish/CONTRIBUTING.md#setting-up-the-development-environment)" and execute the above commands for testing the app functionality.
 
+**Example:**
+```commandline
+track-job add Company1 position1 2022-10-12 <br>
+track-job add Company2 position2 2022-10-21 Applied <br>
+track-job add Company3 position3 2022-10-27 "Tech Interview" 
+track-job ls
+```
+**Output:**
+<p align="center">
+<img src="example.PNG">
+</p>
+
 ## Tech Stack
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
