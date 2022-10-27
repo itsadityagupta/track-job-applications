@@ -20,14 +20,14 @@ class Status(Enum):
             return Status.APPLIED
         elif status.upper() in ["ONLINE_ASSESSMENT", "OA"]:
             return Status.OA
-        elif status.upper() == [
+        elif status.upper() in [
             "TECH_INTERVIEW",
             "TECH INTERVIEW",
             "TECH ROUND",
             "TECH_ROUND",
         ]:
             return Status.TECH_INTERVIEW
-        elif status.upper() == ["HR_ROUND", "HR ROUND"]:
+        elif status.upper() in ["HR_ROUND", "HR ROUND"]:
             return Status.HR_ROUND
         elif status.upper() == "REJECTED":
             return Status.REJECTED
