@@ -52,6 +52,26 @@ def status(
 
 
 @app.command()
+def shortlisted(
+    start_date: Optional[str] = typer.Argument(
+        None, help="Start counting the applications from this date"
+    ),
+    end_date: Optional[str] = typer.Argument(
+        None, help="Count the applications made till this date"
+    ),
+):
+    """Gets the number of shortlisted applications within a given time range"""
+    rprint(
+        "# of shortlisted applications: "
+        + str(
+            metrics.get_shortlisted_applications(
+                start_date=start_date, end_date=end_date, get_counts=True
+            )
+        )
+    )
+
+
+@app.command()
 def ratios(
     start_date: Optional[str] = typer.Argument(None, help="Start date"),
     end_date: Optional[str] = typer.Argument(None, help="End date"),
@@ -65,4 +85,13 @@ def ratios(
     else:
         rprint(
             "[green]jobs applied : jobs rejected = N/A since no application is rejected[/green]"
+        )
+    ratio_jobs_shortlisted = metrics.jobs_applied_to_jobs_shortlisted(
+        start_date=start_date, end_date=end_date, counts=True
+    )
+    if ratio_jobs_shortlisted != "-1":
+        rprint("jobs applied : jobs shortlisted = " + ratio_jobs_shortlisted)
+    else:
+        rprint(
+            "[red]jobs applied : jobs rejected = N/A since no application is shortlisted.[/red]"
         )

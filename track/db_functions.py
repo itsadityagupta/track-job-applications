@@ -164,3 +164,56 @@ class DBFunctions:
                     )
         else:
             logger.error("No db session found!")
+
+    def get_shortlisted(
+        self,
+        start_date: Optional[str] = None,
+        end_date: Optional[str] = None,
+        get_counts: bool = True,
+    ):
+        """Fetches shortlisted applications i.e. having status not equal to rejected and applied"""
+        if self.db.session:
+            if start_date is not None and end_date is not None:
+                if get_counts:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status != Status.REJECTED.value,
+                            JobApplication.status != Status.APPLIED.value,
+                            JobApplication.updated_at >= start_date,
+                            JobApplication.updated_at <= end_date,
+                        )
+                        .count()
+                    )
+                else:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status != Status.REJECTED.value,
+                            JobApplication.status != Status.APPLIED.value,
+                            JobApplication.updated_at >= start_date,
+                            JobApplication.updated_at <= end_date,
+                        )
+                        .all()
+                    )
+            elif start_date is None and end_date is None:
+                if get_counts:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status != Status.REJECTED.value,
+                            JobApplication.status != Status.APPLIED.value,
+                        )
+                        .count()
+                    )
+                else:
+                    return (
+                        self.db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status != Status.REJECTED.value,
+                            JobApplication.status != Status.APPLIED.value,
+                        )
+                        .all()
+                    )
+        else:
+            logger.error("No db session found!")
