@@ -1,3 +1,4 @@
+from datetime import datetime
 from typing import Optional
 
 from track import app_functions
@@ -77,7 +78,7 @@ class DBFunctions:
         if self.db.session:
             self.db.session.query(JobApplication).filter(
                 JobApplication.id == application_id
-            ).update({"company": company})
+            ).update({"company": company, "updated_at": datetime.now().date()})
             self.db.session.commit()
         else:
             logger.error("No db session found!")
@@ -88,7 +89,9 @@ class DBFunctions:
         if self.db.session:
             self.db.session.query(JobApplication).filter(
                 JobApplication.id == application_id
-            ).update({"position": position})
+            ).update(
+                {"position": position, "updated_at": datetime.now().date()}
+            )
             self.db.session.commit()
         else:
             logger.error("No db session found!")
@@ -99,7 +102,9 @@ class DBFunctions:
         if self.db.session:
             self.db.session.query(JobApplication).filter(
                 JobApplication.id == application_id
-            ).update({"status": status.value})
+            ).update(
+                {"status": status.value, "updated_at": datetime.now().date()}
+            )
             self.db.session.commit()
         else:
             logger.error("No db session found!")
@@ -111,7 +116,9 @@ class DBFunctions:
             applied_at = app_functions.parse_date(applied_at)
             self.db.session.query(JobApplication).filter(
                 JobApplication.id == application_id
-            ).update({"applied_at": applied_at})
+            ).update(
+                {"applied_at": applied_at, "updated_at": datetime.now().date()}
+            )
             self.db.session.commit()
         else:
             logger.error("No db session found!")
