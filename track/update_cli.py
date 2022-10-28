@@ -1,9 +1,13 @@
 import typer
 
-from track.app_constants import Status
-from track.dao import db_service
+from track.job_tracker import JobTracker
 
 app = typer.Typer()
+
+
+def get_tracker():
+    """Returns an instance of the JobTracker class."""
+    return JobTracker()
 
 
 @app.command()
@@ -11,10 +15,10 @@ def company(
     application_id: int = typer.Argument(
         ..., help="ID for job application you want to update"
     ),
-    company_name: str = typer.Argument(..., help="Company name"),
+    company: str = typer.Argument(..., help="Company name"),
 ):
     """Updates the company name in the application with the given ID"""
-    db_service.update_company(application_id, company_name)
+    get_tracker().update_company(application_id, company)
 
 
 @app.command()
@@ -22,10 +26,10 @@ def position(
     application_id: int = typer.Argument(
         ..., help="ID for job application you want to update"
     ),
-    position_name: str = typer.Argument(..., help="Position applied for"),
+    position: str = typer.Argument(..., help="Position applied for"),
 ):
     """Updates the position in the application with the given ID"""
-    db_service.update_position(application_id, position_name)
+    get_tracker().update_position(application_id, position)
 
 
 @app.command()
@@ -33,10 +37,10 @@ def status(
     application_id: int = typer.Argument(
         ..., help="ID for job application you want to update"
     ),
-    status_name: str = typer.Argument(..., help="Status of the application"),
+    status: str = typer.Argument(..., help="Status of the application"),
 ):
     """Updates the status of the application with the given ID"""
-    db_service.update_status(application_id, Status.from_string(status_name))
+    get_tracker().update_status(application_id, status)
 
 
 @app.command()
@@ -44,9 +48,9 @@ def applied_at(
     application_id: int = typer.Argument(
         ..., help="ID for job application you want to update"
     ),
-    new_date: str = typer.Argument(
+    date: str = typer.Argument(
         ..., help="Date at which applied for the application"
     ),
 ):
     """Updates the applied_at date in the application with the given ID"""
-    db_service.update_applied_at_date(application_id, new_date)
+    get_tracker().update_applied_at(application_id, date)

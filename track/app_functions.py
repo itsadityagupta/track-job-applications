@@ -22,12 +22,12 @@ def parse_date(date: str):
         rprint(
             "[red] Date was not specified in the expected format[/red][yellow]YYYY-MM-DD[/yellow]"
         )
-        typer.Exit()
+        typer.Exit(1)
     except Exception:
         rprint(
             f"[red]Something went wrong while parsing the date: {date}[/red]: {traceback.print_exc()}"  # traceback.print_exc will print the stack trace of the last exception occurred.
         )
-        typer.Exit()
+        raise typer.Exit(1)
 
 
 def print_applications(applications):

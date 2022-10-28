@@ -1,21 +1,23 @@
-from datetime import date, datetime
+from datetime import datetime
 from typing import Optional
 
 import typer
-from rich import print as rprint
 
-from track import __app_name__, __version__, app_functions, report, update
-from track.app_constants import Status
-from track.dao import db_service
-from track.job_application import JobApplication
+from track import __app_name__, __version__, report_cli, update_cli
+from track.job_tracker import JobTracker
 
 app = typer.Typer()
 
 app.add_typer(
-    update.app, name="update", help="Updates the job application details"
+    update_cli.app, name="update", help="Updates the job application details"
 )
 
-app.add_typer(report.app, name="report", help="Reporting")
+app.add_typer(report_cli.app, name="report", help="Reporting")
+
+
+def get_tracker():
+    """Returns an instance of the JobTracker class."""
+    return JobTracker()
 
 
 def _version_callback(value: bool) -> None:
@@ -53,22 +55,16 @@ def add(
     ),
 ):
     """Add job application details"""
-
-    applied_at = app_functions.parse_date(applied_at)
-    application = JobApplication(
-        company=company,
-        position=position,
-        status=Status.from_string(status).value,  # validate the given status
-        applied_at=applied_at,
-    )
-    db_service.add_job_application(application)
+    get_tracker().add(company, position, applied_at, status)
 
 
 @app.command()
-def ls():
+def ls(
+    start_date: Optional[str] = typer.Argument(None, help="Start date"),
+    end_date: Optional[str] = typer.Argument(None, help="End date"),
+):
     """Prints all the job applications present in the database"""
-    applications = db_service.get_all_applications()
-    app_functions.print_applications(applications)
+    get_tracker().list(start_date, end_date)
     # TODO: add start and end date along with the status (to filter with the given status)
 
 
@@ -79,8 +75,7 @@ def rm(
     )
 ):
     """Deletes the job application with the given id"""
-    db_service.delete_job_application(application_id)
-    rprint(f"Job application [{application_id}] deleted.")
+    get_tracker().delete(application_id)
 
 
 def entry():
