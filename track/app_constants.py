@@ -1,6 +1,7 @@
 from enum import Enum
 
 DATE_FORMAT: str = "%Y-%m-%d"
+PRECISION: int = 2
 
 
 class Status(Enum):
