@@ -33,4 +33,4 @@ class Status(Enum):
         elif status.upper() == "REJECTED":
             return Status.REJECTED
         else:
-            raise ValueError("Not a Valid Status")
+            raise ValueError(f"'{status}' is not a Valid Status")

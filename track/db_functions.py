@@ -1,12 +1,12 @@
-import os
 from datetime import datetime
 from typing import Optional
+
+import typer
 
 from track import app_functions
 from track.app_constants import Status
 from track.database import Database
 from track.job_application import JobApplication
-from track.logger import logger
 
 
 class DBFunctions:
@@ -15,11 +15,15 @@ class DBFunctions:
     def __init__(self, db_path: str, echo: bool):
         self.db = Database(db_path, echo)
 
-    def add_job_application(self, application: JobApplication):
+    def add_job_application(self, application: JobApplication) -> int:
         """Add a job application to the database"""
         self.db.session.add(application)
         self.db.session.commit()
-        logger.info("Job application added successfully!")
+        self.db.session.refresh(application)
+        typer.secho(
+            f"Job application added successfully with id {application.id}."
+        )
+        return application.id
         # TODO: throw relevant exception
 
     def get_all_applications(
@@ -56,14 +60,42 @@ class DBFunctions:
         # TODO: Another way is to return only job ids. But check if it's feasible
         # TODO: throw relevant exception
 
-    def delete_job_application(self, application_id: int):
+    def delete_job_application(self, application_id: int) -> int:
         """Deletes job application with the given application id."""
-        self.db.session.delete(
+        application = (
             self.db.session.query(JobApplication)
             .filter(JobApplication.id == application_id)
             .one()
         )
+        self.db.session.delete(application)
         self.db.session.commit()
+        typer.secho(f"Job application with id {application_id} deleted.")
+        return application.id
+
+    def delete_all(
+        self, start_date: Optional[str] = None, end_date: Optional[str] = None
+    ) -> list[int]:
+        """Deletes all the applications present in a given date range"""
+        if start_date is not None and end_date is not None:
+            applications = (
+                self.db.session.query(JobApplication)
+                .filter(
+                    JobApplication.applied_at >= start_date,
+                    JobApplication.applied_at <= end_date,
+                )
+                .all()
+            )
+            for application in applications:
+                self.db.session.delete(application)
+            self.db.session.commit()
+            return [application.id for application in applications]
+        elif start_date is None and end_date is None:
+            applications = self.db.session.query(JobApplication).all()
+            for application in applications:
+                self.db.session.delete(application)
+            self.db.session.commit()
+            return [application.id for application in applications]
+        return []
 
     def update_company(self, application_id: int, company: str):
         """Updates the company name in the application with the given ID"""
@@ -192,3 +224,26 @@ class DBFunctions:
                     )
                     .all()
                 )
+
+    def find_application_id(
+        self,
+        company: str,
+        position: str,
+        applied_at: str,
+        status: str,
+        only_ids=False,
+    ):
+        """Refresh the given application object from database."""
+        applications = (
+            self.db.session.query(JobApplication)
+            .filter(
+                JobApplication.company == company,
+                JobApplication.position == position,
+                JobApplication.status == status,
+                JobApplication.applied_at == applied_at,
+            )
+            .all()
+        )
+        if not only_ids:
+            return applications
+        return [application.id for application in applications]

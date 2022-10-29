@@ -30,7 +30,7 @@ class JobTracker:
             ).value,  # validate the given status
             applied_at=applied_at,
         )
-        self.db_handler.add_job_application(application)
+        return self.db_handler.add_job_application(application)
 
     def list(
         self, start_date: Optional[str] = None, end_date: Optional[str] = None
@@ -40,10 +40,11 @@ class JobTracker:
             start_date, end_date
         )
         app_functions.print_applications(applications)
+        return len(applications)
 
     def delete(self, application_id: int):
         """Deletes the job application with the given id"""
-        self.db_handler.delete_job_application(application_id)
+        return self.db_handler.delete_job_application(application_id)
 
     def update_company(self, application_id: int, company_name: str):
         """Updates the company name in the application with the given ID"""
