@@ -38,8 +38,8 @@ class DBHandler:
                 return (
                     self.db.session.query(JobApplication)
                     .filter(
-                        JobApplication.updated_at >= start_date,
-                        JobApplication.updated_at <= end_date,
+                        JobApplication.applied_at >= start_date,
+                        JobApplication.applied_at <= end_date,
                     )
                     .count()
                 )
@@ -47,8 +47,8 @@ class DBHandler:
                 return (
                     self.db.session.query(JobApplication)
                     .filter(
-                        JobApplication.updated_at >= start_date,
-                        JobApplication.updated_at <= end_date,
+                        JobApplication.applied_at >= start_date,
+                        JobApplication.applied_at <= end_date,
                     )
                     .all()
                 )
@@ -146,8 +146,8 @@ class DBHandler:
                     self.db.session.query(JobApplication)
                     .filter(
                         JobApplication.status == status.value,
-                        start_date <= JobApplication.updated_at,
-                        JobApplication.updated_at <= end_date,
+                        start_date <= JobApplication.applied_at,
+                        JobApplication.applied_at <= end_date,
                     )
                     .count()
                 )
@@ -156,8 +156,8 @@ class DBHandler:
                     self.db.session.query(JobApplication)
                     .filter(
                         JobApplication.status == status.value,
-                        start_date <= JobApplication.updated_at,
-                        JobApplication.updated_at <= end_date,
+                        start_date <= JobApplication.applied_at,
+                        JobApplication.applied_at <= end_date,
                     )
                     .all()
                 )
@@ -189,8 +189,8 @@ class DBHandler:
                     .filter(
                         JobApplication.status != Status.REJECTED.value,
                         JobApplication.status != Status.APPLIED.value,
-                        JobApplication.updated_at >= start_date,
-                        JobApplication.updated_at <= end_date,
+                        JobApplication.applied_at >= start_date,
+                        JobApplication.applied_at <= end_date,
                     )
                     .count()
                 )
@@ -200,8 +200,8 @@ class DBHandler:
                     .filter(
                         JobApplication.status != Status.REJECTED.value,
                         JobApplication.status != Status.APPLIED.value,
-                        JobApplication.updated_at >= start_date,
-                        JobApplication.updated_at <= end_date,
+                        JobApplication.applied_at >= start_date,
+                        JobApplication.applied_at <= end_date,
                     )
                     .all()
                 )
