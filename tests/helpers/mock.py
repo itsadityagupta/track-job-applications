@@ -3,7 +3,7 @@ import os
 import pytest
 
 from track.app_constants import Status
-from track.db_functions import DBFunctions
+from track.db_handler import DBHandler
 from track.job_application import JobApplication
 from track.job_tracker import JobTracker
 
@@ -47,5 +47,5 @@ def get_mock_db_handler(
     ),
     echo: bool = False,
 ):
-    """Returns an instance of DBFunctions class."""
-    return DBFunctions(db_path, echo)
+    """Returns an instance of DBHandler class."""
+    return DBHandler(db_path, echo)

@@ -9,7 +9,7 @@ from track.database import Database
 from track.job_application import JobApplication
 
 
-class DBFunctions:
+class DBHandler:
     """Class to perform all db operations"""
 
     def __init__(self, db_path: str, echo: bool):
