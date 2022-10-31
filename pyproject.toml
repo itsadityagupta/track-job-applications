@@ -34,6 +34,11 @@ color = true
 generate-badge = "."
 badge-format = "svg"
 
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+line_length = 88
+
 [tool.poetry]
 name = "track-job-applications"
 version = "0.0.3"
@@ -64,13 +69,22 @@ black = "^22.10.0"
 isort = "^5.10.1"
 interrogate = "^1.5.0"
 flake8 = "^5.0.4"
+pytest = "^7.2.0"
+faker = "15.1.1"
+pytest-mock = "3.10.0"
+
+[tool.pytest.ini_options]
+log_cli=true
+testpaths = [
+    "tests"
+]
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
-track-job = 'track.main:entry'
+track-job = 'track.cli:entry'
 
 [tool.poetry.urls]
 "Bug Tracker" = "https://github.com/Aditya-Gupta1/track-job-applications/issues"

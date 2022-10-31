@@ -1,3 +1,3 @@
-from main import entry
+from cli import entry
 
 entry()

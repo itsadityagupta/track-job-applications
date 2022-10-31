@@ -1,11 +1,15 @@
 from typing import Optional
 
 import typer
-from rich import print as rprint
 
-from track import metrics
+from track.reporter import Reporter
 
 app = typer.Typer()
+
+
+def get_reporter():
+    """Returns an instance of a Reporter class."""
+    return Reporter()
 
 
 @app.callback(invoke_without_command=True)
@@ -17,11 +21,11 @@ def default(
     """Default report"""
     if ctx.invoked_subcommand is not None:
         return
-    metrics.generate_report(start_date, end_date)
+    get_reporter().generate_report(start_date, end_date)
 
 
 @app.command()
-def total(
+def counts(
     start_date: Optional[str] = typer.Argument(
         None, help="Start counting the applications from this date"
     ),
@@ -30,8 +34,8 @@ def total(
     ),
 ):
     """Get the total number of applications within a given date range"""
-    rprint(
-        f"# of applications: {metrics.num_of_applications(start_date, end_date)}"
+    typer.secho(
+        f"Total Applications: {get_reporter().total_counts(start_date, end_date)}"
     )
 
 
@@ -46,8 +50,8 @@ def status(
     ),
 ):
     """Get the counts of application for the given status in the given time range"""
-    rprint(
-        f"# of applications with status '{status}': {metrics.applications_by_status_count(status, start_date, end_date)}"
+    typer.secho(
+        f"Applications with status '{status}' = {get_reporter().status_counts(start_date, end_date)}"
     )
 
 
@@ -61,13 +65,8 @@ def shortlisted(
     ),
 ):
     """Gets the number of shortlisted applications within a given time range"""
-    rprint(
-        "# of shortlisted applications: "
-        + str(
-            metrics.get_shortlisted_applications(
-                start_date=start_date, end_date=end_date, get_counts=True
-            )
-        )
+    typer.secho(
+        f"Shortlisted Applications = {get_reporter().shortlisted_counts(start_date, end_date)}"
     )
 
 
@@ -77,21 +76,20 @@ def ratios(
     end_date: Optional[str] = typer.Argument(None, help="End date"),
 ):
     """Displays all the ratios"""
-    ratio_jobs_rejected = metrics.jobs_applied_to_jobs_rejected(
+    rejected_ratio, shortlisted_ratio = get_reporter().ratios(
         start_date, end_date
     )
-    if ratio_jobs_rejected != "-1":
-        rprint("jobs applied : jobs rejected = " + ratio_jobs_rejected)
+    if rejected_ratio != "-1":
+        typer.secho("jobs applied : jobs rejected = " + rejected_ratio)
     else:
-        rprint(
-            "[green]jobs applied : jobs rejected = N/A since no application is rejected[/green]"
+        typer.secho(
+            "jobs applied : jobs rejected = N/A since no application is rejected.",
+            fg="green",
         )
-    ratio_jobs_shortlisted = metrics.jobs_applied_to_jobs_shortlisted(
-        start_date=start_date, end_date=end_date, counts=True
-    )
-    if ratio_jobs_shortlisted != "-1":
-        rprint("jobs applied : jobs shortlisted = " + ratio_jobs_shortlisted)
+    if shortlisted_ratio != "-1":
+        typer.secho("jobs applied : jobs shortlisted = " + shortlisted_ratio)
     else:
-        rprint(
-            "[red]jobs applied : jobs rejected = N/A since no application is shortlisted.[/red]"
+        typer.secho(
+            "jobs applied : jobs shortlisted = N/A since no application is shortlisted.",
+            fg="red",
         )
