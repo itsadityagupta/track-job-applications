@@ -2,13 +2,11 @@ import os.path
 import sqlite3
 
 from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import Session
 
 from track.app_functions import get_conn_string
 from track.job_application import Base
 from track.logger import logger
-
-Session = sessionmaker()
 
 
 class Database:

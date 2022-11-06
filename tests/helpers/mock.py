@@ -49,3 +49,9 @@ def get_mock_db_handler(
 ):
     """Returns an instance of DBHandler class."""
     return DBHandler(db_path, echo)
+
+
+@pytest.fixture
+def get_mock_db_path(faker):
+    """Get a mock path for database"""
+    return faker.file_path(depth=5, extension="db")

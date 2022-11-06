@@ -5,3 +5,5 @@ max-complexity = 18
 select = B,C,E,F,W,T4,B9
 per-file-ignores =
     tests/test_cli.py:F811
+    tests/test_app_functions.py:F811
+    tests/test_db_handler.py:F811
