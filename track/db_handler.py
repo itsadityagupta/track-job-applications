@@ -2,6 +2,7 @@ from datetime import datetime
 from typing import Optional
 
 import typer
+from sqlalchemy import asc
 
 from track import app_functions
 from track.app_constants import Status
@@ -57,13 +58,18 @@ class DBHandler:
                         JobApplication.applied_at >= start_date,
                         JobApplication.applied_at <= end_date,
                     )
+                    .order_by(JobApplication.applied_at)
                     .all()
                 )
         elif start_date is None and end_date is None:
             if get_counts:
                 return self.__db.session.query(JobApplication).count()
             else:
-                return self.__db.session.query(JobApplication).all()
+                return (
+                    self.__db.session.query(JobApplication)
+                    .order_by(JobApplication.applied_at)
+                    .all()
+                )
         # TODO: Another way is to return only job ids. But check if it's feasible
         # TODO: throw relevant exception
 
@@ -170,6 +176,7 @@ class DBHandler:
                         start_date <= JobApplication.applied_at,
                         JobApplication.applied_at <= end_date,
                     )
+                    .order_by(JobApplication.applied_at)
                     .all()
                 )
         elif start_date is None and end_date is None:
@@ -183,6 +190,7 @@ class DBHandler:
                 return (
                     self.__db.session.query(JobApplication)
                     .filter(JobApplication.status == status.value)
+                    .order_by(JobApplication.applied_at)
                     .all()
                 )
 
@@ -217,6 +225,7 @@ class DBHandler:
                         JobApplication.applied_at >= start_date,
                         JobApplication.applied_at <= end_date,
                     )
+                    .order_by(JobApplication.applied_at)
                     .all()
                 )
         elif start_date is None and end_date is None:
@@ -236,6 +245,7 @@ class DBHandler:
                         JobApplication.status != Status.REJECTED.value,
                         JobApplication.status != Status.APPLIED.value,
                     )
+                    .order_by(JobApplication.applied_at)
                     .all()
                 )
 
@@ -256,6 +266,7 @@ class DBHandler:
                 JobApplication.status == status,
                 JobApplication.applied_at == applied_at,
             )
+            .order_by(JobApplication.applied_at)
             .all()
         )
         if not only_ids:
