@@ -10,6 +10,8 @@ applied to and provide relevant metrics on them.
 ![Good First Issues](https://img.shields.io/github/issues/Aditya-Gupta1/job-application-cli/good%20first%20issue?color=blue&style=flat-square)
 ![Hacktoberfest Issues](https://img.shields.io/github/issues/Aditya-Gupta1/job-application-cli/hacktoberfest?color=cyan&style=flat-square)
 
+> **Refer to the [publish](https://github.com/Aditya-Gupta1/track-job-applications/tree/publish) branch for the current progress of the project along with the updated code and the documentation**.
+
 ## Motivation
 
 The question is: **"Why do we even need to track our job applications?"**
