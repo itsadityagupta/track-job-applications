@@ -20,7 +20,7 @@ def parse_date(date: str):
         return datetime.strptime(date, DATE_FORMAT).date()
     except ValueError:
         rprint(
-            "[red] Date was not specified in the expected format[/red][yellow]YYYY-MM-DD[/yellow]"
+            "[red]Date is invalid or was not specified in the expected format[/red][yellow] YYYY-MM-DD.[/yellow]"
         )
         typer.Exit(1)
     except Exception:
