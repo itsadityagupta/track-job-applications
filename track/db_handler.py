@@ -38,9 +38,10 @@ class DBHandler:
     ):
         """Queries database to get all the job applications"""
         if start_date is not None and end_date is not None:
+            start_date = app_functions.parse_date(start_date)
+            end_date = app_functions.parse_date(end_date)
+            app_functions.validate_dates(start_date, end_date)
             if get_counts:
-                start_date = app_functions.parse_date(start_date)
-                end_date = app_functions.parse_date(end_date)
                 return (
                     self.__db.session.query(JobApplication)
                     .filter(
@@ -50,8 +51,6 @@ class DBHandler:
                     .count()
                 )
             else:
-                start_date = app_functions.parse_date(start_date)
-                end_date = app_functions.parse_date(end_date)
                 return (
                     self.__db.session.query(JobApplication)
                     .filter(
@@ -87,6 +86,7 @@ class DBHandler:
         if start_date is not None and end_date is not None:
             start_date = app_functions.parse_date(start_date)
             end_date = app_functions.parse_date(end_date)
+            app_functions.validate_dates(start_date, end_date)
             applications = (
                 self.__db.session.query(JobApplication)
                 .filter(
@@ -151,6 +151,7 @@ class DBHandler:
         if start_date is not None and end_date is not None:
             start_date = app_functions.parse_date(start_date)
             end_date = app_functions.parse_date(end_date)
+            app_functions.validate_dates(start_date, end_date)
             if get_counts:
                 return (
                     self.__db.session.query(JobApplication)
@@ -193,6 +194,9 @@ class DBHandler:
     ):
         """Fetches shortlisted applications i.e. having status not equal to rejected and applied"""
         if start_date is not None and end_date is not None:
+            start_date = app_functions.parse_date(start_date)
+            end_date = app_functions.parse_date(end_date)
+            app_functions.validate_dates(start_date, end_date)
             if get_counts:
                 return (
                     self.__db.session.query(JobApplication)

@@ -22,12 +22,23 @@ def parse_date(date: str):
         rprint(
             "[red]Date is invalid or was not specified in the expected format[/red][yellow] YYYY-MM-DD.[/yellow]"
         )
-        typer.Exit(1)
+        raise typer.Exit(1)
     except Exception:
         rprint(
             f"[red]Something went wrong while parsing the date: {date}[/red]: {traceback.print_exc()}"  # traceback.print_exc will print the stack trace of the last exception occurred.
         )
         raise typer.Exit(1)
+
+
+def validate_dates(start_date, end_date):
+    """Validate the start and the end date."""
+    if end_date < start_date:
+        typer.secho(
+            f"Start date {start_date} is greater than the end date {end_date}.",
+            fg=typer.colors.BRIGHT_RED,
+        )
+        raise typer.Exit(1)
+    return True
 
 
 def print_applications(applications):
