@@ -5,7 +5,7 @@ import typer
 
 from track import app_constants
 from track.app_constants import Status
-from track.db_functions import DBFunctions
+from track.db_handler import DBHandler
 
 
 class Reporter:
@@ -18,7 +18,7 @@ class Reporter:
         ),
         echo: bool = False,
     ):
-        self.db_handler = DBFunctions(db_path, echo)
+        self.db_handler = DBHandler(db_path, echo)
 
     def total_counts(
         self, start_date: Optional[str] = None, end_date: Optional[str] = None

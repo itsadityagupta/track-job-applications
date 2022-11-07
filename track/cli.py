@@ -60,8 +60,12 @@ def add(
 
 @app.command()
 def ls(
-    start_date: Optional[str] = typer.Argument(None, help="Start date"),
-    end_date: Optional[str] = typer.Argument(None, help="End date"),
+    start_date: Optional[str] = typer.Argument(
+        None, help="Start date in YYYY-MM-DD"
+    ),
+    end_date: Optional[str] = typer.Argument(
+        None, help="End date in YYYY-MM-DD"
+    ),
 ):
     """Prints all the job applications present in the database"""
     get_tracker().list(start_date, end_date)

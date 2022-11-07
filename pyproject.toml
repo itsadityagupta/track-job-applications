@@ -37,7 +37,7 @@ badge-format = "svg"
 [tool.isort]
 multi_line_output = 3
 include_trailing_comma = true
-line_length = 88
+line_length = 79
 
 [tool.poetry]
 name = "track-job-applications"
@@ -72,6 +72,7 @@ flake8 = "^5.0.4"
 pytest = "^7.2.0"
 faker = "15.1.1"
 pytest-mock = "3.10.0"
+coverage = "6.5.0"
 
 [tool.pytest.ini_options]
 log_cli=true

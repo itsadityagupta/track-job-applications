@@ -8,7 +8,7 @@ from tests.helpers.mock import (
     get_mock_job_tracker,
 )
 from track import __app_name__, __version__, cli
-from track.db_functions import DBFunctions
+from track.db_handler import DBHandler
 from track.job_application import JobApplication
 from track.job_tracker import JobTracker
 
@@ -18,7 +18,7 @@ runner = CliRunner()
 @pytest.fixture(autouse=True)
 def before_and_after_tests(get_mock_db_handler):
     """Clean up the database before and after running a test."""
-    handler: DBFunctions = get_mock_db_handler
+    handler: DBHandler = get_mock_db_handler
     handler.delete_all()
     assert handler.get_all_applications(get_counts=True) == 0
 

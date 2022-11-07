@@ -3,7 +3,7 @@ from typing import Optional
 
 from track import app_functions
 from track.app_constants import Status
-from track.db_functions import DBFunctions
+from track.db_handler import DBHandler
 from track.job_application import JobApplication
 
 
@@ -17,7 +17,7 @@ class JobTracker:
         ),
         echo: bool = False,
     ):
-        self.db_handler = DBFunctions(db_path, echo)
+        self.db_handler = DBHandler(db_path, echo)
 
     def add(self, company: str, position: str, applied_at: str, status: str):
         """Add job application details"""
