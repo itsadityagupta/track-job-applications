@@ -39,6 +39,8 @@ class DBHandler:
         """Queries database to get all the job applications"""
         if start_date is not None and end_date is not None:
             if get_counts:
+                start_date = app_functions.parse_date(start_date)
+                end_date = app_functions.parse_date(end_date)
                 return (
                     self.__db.session.query(JobApplication)
                     .filter(
@@ -48,6 +50,8 @@ class DBHandler:
                     .count()
                 )
             else:
+                start_date = app_functions.parse_date(start_date)
+                end_date = app_functions.parse_date(end_date)
                 return (
                     self.__db.session.query(JobApplication)
                     .filter(
@@ -81,6 +85,8 @@ class DBHandler:
     ) -> list[int]:
         """Deletes all the applications present in a given date range"""
         if start_date is not None and end_date is not None:
+            start_date = app_functions.parse_date(start_date)
+            end_date = app_functions.parse_date(end_date)
             applications = (
                 self.__db.session.query(JobApplication)
                 .filter(
