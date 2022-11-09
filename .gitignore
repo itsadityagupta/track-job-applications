@@ -4,3 +4,5 @@ __pycache__
 htmlcov
 tests/helpers/test_site.db
 track/site.db
+dist
+interrogate_badge.svg

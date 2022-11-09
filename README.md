@@ -65,12 +65,12 @@ pip install track-job-applications
 > track-job report <start date in YYYY-MM-DD> <end date in YYYY-MM-DD>
 ```
 
-> :warning: Since the app is not published yet, you can follow the "[setting up the development environment steps](https://github.com/Aditya-Gupta1/track-job-applications/blob/publish/CONTRIBUTING.md#setting-up-the-development-environment)" and execute the above commands for testing the app functionality.
+> :warning: Since the app is not published yet, you can follow the "[setting up the development environment steps](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/CONTRIBUTING.md#setting-up-the-development-environment)" and execute the above commands for testing the app functionality.
 
 **Example:**
 ```commandline
-track-job add Company1 position1 2022-10-12 <br>
-track-job add Company2 position2 2022-10-21 Applied <br>
+track-job add Company1 position1 2022-10-12
+track-job add Company2 position2 2022-10-21 Applied
 track-job add Company3 position3 2022-10-27 "Tech Interview" 
 track-job ls
 ```
@@ -89,6 +89,6 @@ track-job ls
 
 Contributions are always welcome!
 
-See [CONTRIBUTING.md](https://github.com/Aditya-Gupta1/track-job-applications/blob/publish/CONTRIBUTING.md) for ways to get started.
+See [CONTRIBUTING.md](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/CONTRIBUTING.md) for ways to get started.
 
-Please adhere to this project's [CODE OF CONDUCT](https://github.com/Aditya-Gupta1/track-job-applications/blob/publish/CODE_OF_CONDUCT.md).
+Please adhere to this project's [CODE OF CONDUCT](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/CODE_OF_CONDUCT.md).
