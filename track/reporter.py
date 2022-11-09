@@ -50,39 +50,41 @@ class Reporter:
             start_date, end_date, get_counts=True
         )
 
-    def jobs_applied_to_jobs_rejected(
+    def jobs_rejected_to_jobs_applied(
         self, start_date: Optional[str] = None, end_date: Optional[str] = None
     ):
         """Calculates the ratio of number of jobs applied to the number of jobs rejected"""
         jobs_applied = self.db_handler.get_all_applications(
             start_date, end_date, get_counts=True
         )
+        if jobs_applied == 0:
+            return "-1"
+
         jobs_rejected = self.db_handler.get_applications_by_status(
             status=Status.REJECTED.value(),
             start_date=start_date,
             end_date=end_date,
             get_counts=True,
         )
-        if jobs_rejected == 0:
-            return "-1"
         return str(
-            round(jobs_applied / jobs_rejected, app_constants.PRECISION)
+            round(jobs_rejected / jobs_applied, app_constants.PRECISION)
         )
 
-    def jobs_applied_to_jobs_shortlisted(
+    def jobs_shortlisted_to_jobs_applied(
         self, start_date: Optional[str] = None, end_date: Optional[str] = None
     ):
         """Calculates the ratio of number of jobs applied to the number of jobs shortlisted"""
         jobs_applied = self.db_handler.get_all_applications(
             start_date, end_date, get_counts=True
         )
+        if jobs_applied == 0:
+            return "-1"
+
         jobs_shortlisted = self.db_handler.get_shortlisted(
             start_date, end_date, get_counts=True
         )
-        if jobs_shortlisted == 0:
-            return "-1"
         return str(
-            round(jobs_applied / jobs_shortlisted, app_constants.PRECISION)
+            round(jobs_shortlisted / jobs_applied, app_constants.PRECISION)
         )
 
     def ratios(
@@ -90,8 +92,8 @@ class Reporter:
     ):
         """Calculates all the available ratios"""
         return [
-            self.jobs_applied_to_jobs_rejected(start_date, end_date),
-            self.jobs_applied_to_jobs_shortlisted(start_date, end_date),
+            self.jobs_rejected_to_jobs_applied(start_date, end_date),
+            self.jobs_shortlisted_to_jobs_applied(start_date, end_date),
         ]
 
     def generate_report(
@@ -110,16 +112,16 @@ class Reporter:
             f"Shortlisted Applications = {self.shortlisted_counts(start_date, end_date)}"
         )
         if ratios[0] != "-1":
-            typer.secho("jobs applied : jobs rejected = " + ratios[0])
+            typer.secho("jobs rejected : jobs applied = " + ratios[0])
         else:
             typer.secho(
-                "jobs applied : jobs rejected = N/A since no application is rejected.",
-                fg="green",
+                "jobs rejected : jobs applied = UNDEFINED [No applications found]",
+                fg="red",
             )
         if ratios[1] != "-1":
-            typer.secho("jobs applied : jobs shortlisted = " + ratios[1])
+            typer.secho("jobs shortlisted : jobs applied = " + ratios[1])
         else:
             typer.secho(
-                "jobs applied : jobs shortlisted = N/A since no application is shortlisted.",
+                "jobs shortlisted : jobs applied = UNDEFINED [No applications found]",
                 fg="red",
             )

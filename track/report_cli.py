@@ -80,16 +80,16 @@ def ratios(
         start_date, end_date
     )
     if rejected_ratio != "-1":
-        typer.secho("jobs applied : jobs rejected = " + rejected_ratio)
+        typer.secho("jobs rejected : jobs applied = " + rejected_ratio)
     else:
         typer.secho(
-            "jobs applied : jobs rejected = N/A since no application is rejected.",
-            fg="green",
+            "jobs rejected : jobs applied = UNDEFINED [No applications found]",
+            fg="red",
         )
     if shortlisted_ratio != "-1":
-        typer.secho("jobs applied : jobs shortlisted = " + shortlisted_ratio)
+        typer.secho("jobs shortlisted : jobs applied = " + shortlisted_ratio)
     else:
         typer.secho(
-            "jobs applied : jobs shortlisted = N/A since no application is shortlisted.",
+            "jobs shortlisted : jobs applied = UNDEFINED [No applications found]",
             fg="red",
         )
