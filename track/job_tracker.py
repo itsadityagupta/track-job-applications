@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-from track import app_functions
+from track import app_constants, app_functions
 from track.app_constants import Status
 from track.db_handler import DBHandler
 from track.job_application import JobApplication
@@ -25,7 +25,7 @@ class JobTracker:
         application = JobApplication(
             company=company,
             position=position,
-            status=Status.from_string(
+            status=app_constants.from_string(
                 status
             ).value,  # validate the given status
             applied_at=applied_at,

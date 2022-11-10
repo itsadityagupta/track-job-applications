@@ -2,9 +2,8 @@ from datetime import datetime
 from typing import Optional
 
 import typer
-from sqlalchemy import asc
 
-from track import app_functions
+from track import app_constants, app_functions
 from track.app_constants import Status
 from track.database import Database
 from track.job_application import JobApplication
@@ -127,7 +126,7 @@ class DBHandler:
 
     def update_status(self, application_id: int, status: str):
         """Updates the status of the application with the given ID"""
-        status = Status.from_string(status)
+        status = app_constants.from_string(status)
         self.__db.session.query(JobApplication).filter(
             JobApplication.id == application_id
         ).update({"status": status.value, "updated_at": datetime.now().date()})
@@ -151,7 +150,7 @@ class DBHandler:
         get_counts: bool = False,
     ):
         """Get the application counts for the given status and given date"""
-        status = Status.from_string(status)
+        status = app_constants.from_string(status)
         if start_date is not None and end_date is not None:
             start_date = app_functions.parse_date(start_date)
             end_date = app_functions.parse_date(end_date)
