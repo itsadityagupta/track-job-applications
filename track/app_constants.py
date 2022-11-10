@@ -12,6 +12,7 @@ class Status(Enum):
     TECH_INTERVIEW = "TECH_INTERVIEW"
     HR_ROUND = "HR_ROUND"
     REJECTED = "REJECTED"
+    OFFER = "OFFER"
 
     @staticmethod
     def from_string(status: str):
@@ -40,5 +41,7 @@ class Status(Enum):
             return Status.HR_ROUND
         elif status.upper() in ["REJECTED"]:
             return Status.REJECTED
+        elif status.upper() in ["OFFER", "SELECTED"]:
+            return Status.OFFER
         else:
             raise ValueError(f"'{status}' is not a Valid Status")
