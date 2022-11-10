@@ -21,6 +21,7 @@ class Status(Enum):
             return Status.APPLIED
         elif status.upper() in [
             "ONLINE_ASSESSMENT",
+            "ONLINE ASSESSMENT",
             "OA",
             "ONLINE-ASSESSMENT",
         ]:

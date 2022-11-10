@@ -25,9 +25,7 @@ class DBHandler:
         self.__db.session.add(application)
         self.__db.session.commit()
         self.__db.session.refresh(application)
-        typer.secho(
-            f"Job application added successfully with id {application.id}."
-        )
+        typer.secho(f"Job application added with id {application.id}.")
         return application.id
         # TODO: throw relevant exception
 
