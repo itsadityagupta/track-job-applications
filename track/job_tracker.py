@@ -2,7 +2,6 @@ import os
 from typing import Optional
 
 from track import app_constants, app_functions
-from track.app_constants import Status
 from track.db_handler import DBHandler
 from track.job_application import JobApplication
 

@@ -38,7 +38,16 @@ def get_version(
         is_eager=True,
     )
 ) -> None:
-    """Display application version"""
+    """
+    Displays application version.
+
+    Args:
+        version: -v or --version flag
+
+    Examples:
+        >>>track-job --version
+        >>>track-job -v
+    """
     return
 
 
@@ -46,28 +55,57 @@ def get_version(
 def add(
     company: str = typer.Argument(..., help="Company applied to"),
     position: str = typer.Argument(..., help="Position applied for"),
-    applied_at: str = typer.Argument(
+    applied_at: str = typer.Option(
         datetime.date(datetime.now()).isoformat(),
+        "--applied-at",
+        "-a",
         help="Date applied at [YYYY-MM-DD]",
     ),
-    status: str = typer.Argument(
-        "APPLIED", help="Current status of the application"
+    status: str = typer.Option(
+        "APPLIED", "--status", "-s", help="Current status of the application"
     ),
-):
-    """Add job application details"""
+) -> None:
+    """
+    Adds a job application.
+
+    Args:
+        company: Company name applied to.
+        position: Job Post applied to.
+        applied_at: Date on which the application was submitted for the given job posting in YYYY-MM-DD format.
+            (default: current date)
+        status: Application status. For all possible values, check [`Status`][track.app_constants.Status]. (default: `APPLIED`)
+
+    Examples:
+        >>>track-job add Company1 Position1
+        >>>track-job add Company1 Position2 --applied-at 2022-11-10 --status tech
+        >>>track-job add Company1 Position2 -a 2022-11-10 -s offer
+    """
     get_tracker().add(company, position, applied_at, status)
 
 
 @app.command()
 def ls(
-    start_date: Optional[str] = typer.Argument(
-        None, help="Start date in YYYY-MM-DD"
+    start_date: Optional[str] = typer.Option(
+        None, "--start-date", "-s", help="Start date in YYYY-MM-DD"
     ),
-    end_date: Optional[str] = typer.Argument(
-        None, help="End date in YYYY-MM-DD"
+    end_date: Optional[str] = typer.Option(
+        None, "--end-date", "-e", help="End date in YYYY-MM-DD"
     ),
 ):
-    """Prints all the job applications present in the database"""
+    """
+    Lists all the job applications present in the database. (or within a specified date range, if given)
+
+    Args:
+        start_date: Start date to display applications (default: None)
+        end_date: End date to display applications (default: None)
+
+    Examples:
+        >>>track-job ls //displays all the applications
+        >>>track-job ls -s 2022-10-12 -e 2022-11-12 //displays all the applications from 2022-10-12 to 2022-11-12
+
+    Notes:
+        In case the start and the end dates are given, the applications are filtered using the `applied_at` field.
+    """
     get_tracker().list(start_date, end_date)
     # TODO: add start and end date along with the status (to filter with the given status)
 
@@ -78,7 +116,18 @@ def rm(
         ..., help="ID for job application you want to delete"
     )
 ):
-    """Deletes the job application with the given id"""
+    """
+    Deletes the job application with the given id.
+
+    Args:
+        application_id: ID of an application to be deleted.
+
+    Examples:
+        >>>track-job rm 1 //deletes application having ID 1
+
+    Notes:
+        The application id can be found using the [ls][track.cli.ls] command.
+    """
     get_tracker().delete(application_id)
 
 
