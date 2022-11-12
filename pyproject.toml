@@ -41,7 +41,7 @@ line_length = 79
 
 [tool.poetry]
 name = "track-job-applications"
-version = "0.0.3"
+version = "1.0.0"
 description = "A CLI application to track job applications and provide relevant metrics on them."
 authors = ["Aditya Gupta <guptaaditya008@gmail.com>"]
 maintainers = ["Aditya Gupta <guptaaditya008@gmail.com>"]
