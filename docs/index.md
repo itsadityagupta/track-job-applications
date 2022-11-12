@@ -74,11 +74,11 @@ pip install track-job-applications
 > track-job report status rejected
 ```
 
-Refer to the [commands]() section in the documentation for the list of commands available.
+Refer to the [commands](Commands.md) section for the list of commands available.
 
 > Note: All the commands have a `--start-date` or `-s` argument to mention the start date and `--end-date` or `-e` argument
 > to specify the end date, in case the command is to run for applications made within a date range.
->  Also, the data model in which applications are stored can be found in [references]() section in the docs.
+>  Also, the data model in which applications are stored can be found in [references](References.md#job-application-data-model) section in the docs.
 
 ## Contributing
 

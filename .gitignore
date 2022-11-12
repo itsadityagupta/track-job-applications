@@ -1,1 +1,8 @@
 .idea
+__pycache__
+.pytest_cache
+htmlcov
+tests/helpers/test_site.db
+track/site.db
+dist
+interrogate_badge.svg

@@ -63,6 +63,7 @@ poetry install
 poetry shell
 ```
 3. Poetry will spin up a shell where all the commands for the application can be executed and tested.
+4. Once inside the shell, run `pre-commit install`.
 
 ### Contributing to Code
 
@@ -81,3 +82,14 @@ poetry shell
 * After making the changes, run `mkdocs server` to see a live preview of the docs.  
 * Run `mkdocs build` to generate the website elements in the `site` folder.
 * If everything looks fine, raise a PR.
+
+## Pre-commit hooks
+
+Various pre-commit hooks are executed before every commit to maintain code quality. Here's a list of them:
+* [Black](https://github.com/psf/black)
+* [Flake](https://flake8.pycqa.org/en/latest/)
+* [Isort](https://pycqa.github.io/isort/)
+* [Interrogate](https://interrogate.readthedocs.io/en/latest/)
+* [Poetry Check](https://python-poetry.org/docs/master/pre-commit-hooks/#poetry-check)
+* [Poetry Lock](https://python-poetry.org/docs/master/pre-commit-hooks/#poetry-lock)
+* [Poetry Export](https://python-poetry.org/docs/master/pre-commit-hooks/#poetry-export)
