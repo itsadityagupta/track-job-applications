@@ -1,0 +1,26 @@
+site_name: Track Job Applications
+
+theme:
+  name: superhero
+
+markdown_extensions:
+    - toc:
+        permalink: "#"
+
+watch:
+  - track
+
+plugins:
+  - mkdocstrings:
+      default_handler: python
+      handlers:
+        python:
+          options:
+            show_source: false
+
+nav:
+  - Introduction: 'index.md'
+  - Commands: 'Commands.md'
+  - References: 'References.md'
+  - Contributing: 'CONTRIBUTING.md'
+  - License: 'LICENSE.md'

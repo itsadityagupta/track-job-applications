@@ -5,7 +5,11 @@ PRECISION: int = 2
 
 
 class Status(Enum):
-    """Enum for application Status."""
+    """
+    Enum for application Status. It can be `APPLIED`, `OA`, `TECH_INTERVIEW`, `HR_ROUND`, `REJECTED` or `OFFER`.
+
+    A list of possible values that user can enter for it can be seen [here][track.app_constants.from_string].
+    """
 
     APPLIED = "APPLIED"
     OA = "ONLINE_ASSESSMENT"
@@ -17,7 +21,8 @@ class Status(Enum):
 
 def from_string(status: str) -> Status:
     """
-    Parse the given string to the corresponding `Status` Enum value.
+    Parse the given string to the corresponding `Status` Enum value. Only the values mentioned in the source code below
+    for each status will be allowed and converted to the corresponding Enum value.
 
     Args:
         status: Status value in `str`.
