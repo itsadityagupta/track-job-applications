@@ -6,3 +6,4 @@ tests/helpers/test_site.db
 track/site.db
 dist
 interrogate_badge.svg
+site
