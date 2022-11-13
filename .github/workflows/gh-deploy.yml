@@ -7,7 +7,7 @@ on:
       - main
 
 jobs:
-  build:
+  deploy:
     name: MKDocs github pages automatic deployment
     runs-on: ubuntu-latest
     steps:
@@ -29,4 +29,4 @@ jobs:
         if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
         run: poetry install
       - name: MKDocs github deploy
-        run: poetry run mkdocs gh-deploy
+        run: poetry run mkdocs gh-deploy --force
