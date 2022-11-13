@@ -13,6 +13,7 @@ Reading and following these guidelines will help us make the contribution proces
 * [Setting up the development environment](#setting-up-the-development-environment)
   * [Contributing to Code](#contributing-to-code)
   * [Contributing to Docs](#contributing-to-docs)
+* [Pre-commit hooks](#pre-commit-hooks)
 
 ## Code of Conduct
 
@@ -44,7 +45,7 @@ For changes that address core functionality or would require breaking changes (e
 
 In general, we follow the ["fork-and-pull" Git workflow](https://github.com/susam/gitpr)
 
-1. Fork the repository to your own Github account
+1. Fork the repository to your own GitHub account
 2. Clone the project to your machine
 3. Create a branch locally with a succinct but descriptive name
 4. Commit changes to the branch
@@ -79,8 +80,7 @@ poetry shell
 * If you need to add documentation for a new method or a class:
   * add docstrings to them in [google style](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html).
   * add the method's or class's path from repository root prefixed by `:::` in any of the markdown files present in the `docs` folder. (You can take reference of how other entities are mentioned there)
-* After making the changes, run `mkdocs server` to see a live preview of the docs.  
-* Run `mkdocs build` to generate the website elements in the `site` folder.
+* After making the changes, run `mkdocs server` to see a live preview of the docs.
 * If everything looks fine, raise a PR.
 
 ## Pre-commit hooks

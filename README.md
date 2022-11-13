@@ -33,9 +33,9 @@ And the list goes on.
 The documentation for this project is created using [Mkdocs](https://www.mkdocs.org/)
 and deployed on [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages).
 
-You can find the documentation here:
+You can find the documentation here: https://aditya-gupta1.github.io/track-job-applications/
 
->Markdown files that generates documentation are in `docs` folder and the website elements are in the `site` folder.
+>Markdown files that generates documentation are in `docs` folder. The website elements are generated from `docs` folder and moved to `gh-dpeloy` branch. It is from here that the gtihub pages picks up the files for deployment.
 
 ## Installation
 
@@ -74,11 +74,11 @@ pip install track-job-applications
 > track-job report status rejected
 ```
 
-Refer to the [commands]() section in the documentation for the list of commands available.
+Refer to the [commands](https://aditya-gupta1.github.io/track-job-applications/Commands/) section in the documentation for the list of commands available.
 
 > Note: All the commands have a `--start-date` or `-s` argument to mention the start date and `--end-date` or `-e` argument
 > to specify the end date, in case the command is to run for applications made within a date range.
->  Also, the data model in which applications are stored can be found in [references]() section in the docs.
+>  Also, the data model in which applications are stored can be found in [references](https://aditya-gupta1.github.io/track-job-applications/References/) section in the docs.
 
 ## Contributing
 
