@@ -1,4 +1,4 @@
-# Contributing to Job Application CLI
+# Contributing to Track Job Applications
 
 A big welcome and thank you for considering contributing to this project!
 
