@@ -49,12 +49,14 @@ def test_add_application(mocker, get_mock_job_tracker, get_mock_applications):
                 "add",
                 application.company,
                 application.position,
+                "-a",
                 application.applied_at,
+                "-s",
                 application.status,
             ],
         )
         assert result.exit_code == 0
-        assert "Job application added successfully with id " in result.stdout
+        assert "Job application added with id " in result.stdout
 
     assert job_tracker.db_handler.get_all_applications(get_counts=True) == 10
 
@@ -73,12 +75,14 @@ def test_ls(mocker, get_mock_job_tracker, get_mock_applications):
                 "add",
                 application.company,
                 application.position,
+                "-a",
                 application.applied_at,
+                "-s",
                 application.status,
             ],
         )
         assert result.exit_code == 0
-        assert "Job application added successfully with id " in result.stdout
+        assert "Job application added with id " in result.stdout
 
     assert job_tracker.db_handler.get_all_applications(get_counts=True) == 10
 
@@ -103,12 +107,14 @@ def test_rm(mocker, get_mock_job_tracker, get_mock_applications):
                 "add",
                 application.company,
                 application.position,
+                "-a",
                 application.applied_at,
+                "-s",
                 application.status,
             ],
         )
         assert result.exit_code == 0
-        assert "Job application added successfully with id " in result.stdout
+        assert "Job application added with id " in result.stdout
 
     assert job_tracker.db_handler.get_all_applications(get_counts=True) == 10
 
