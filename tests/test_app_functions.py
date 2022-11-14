@@ -1,7 +1,6 @@
 import datetime
-from typing import Any
 
-from _pytest.capture import CaptureFixture
+import pytest
 
 from tests.helpers.mock import get_mock_db_path
 from track.app_functions import get_conn_string, parse_date
@@ -26,25 +25,15 @@ def test_parse_date_correct():
     assert isinstance(result, datetime.date)
 
 
-def test_parse_date_wrong_format(capsys: CaptureFixture[Any]):
+def test_parse_date_wrong_format():
     """Test parse_date function with a date with wrong format."""
     wrong_date = "11-10-2022"
-    _ = parse_date(wrong_date)
-    out, err = capsys.readouterr()
-
-    assert (
-        "Date is invalid or was not specified in the expected format YYYY-MM-DD.\n"
-        == out
-    )
+    with pytest.raises(Exception) as _:
+        parse_date(wrong_date)
 
 
-def test_parse_date_invalid_date(capsys: CaptureFixture[Any]):
+def test_parse_date_invalid_date():
     """Test parse_date function with an invalid date."""
     invalid_date = "12345678"
-    _ = parse_date(invalid_date)
-    out, err = capsys.readouterr()
-
-    assert (
-        "Date is invalid or was not specified in the expected format YYYY-MM-DD.\n"
-        == out
-    )
+    with pytest.raises(Exception) as _:
+        parse_date(invalid_date)
