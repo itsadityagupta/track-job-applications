@@ -1,4 +1,11 @@
 site_name: Track Job Applications
+site_description: Project documentation for Track Job Applications
+site_author: Aditya Gupta
+
+repo_url: https://github.com/Aditya-Gupta1/track-job-applications
+edit_uri: tree/main/docs/
+
+copyright: Copyright &copy; 2022 <a href="https://twitter.com/itsadityagupta">Aditya Gupta</a>
 
 theme:
   name: superhero
