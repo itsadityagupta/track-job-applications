@@ -1,5 +1,5 @@
 # Reference: https://www.youtube.com/watch?v=0pYN6Z-t1-s
-name: gh-deploy
+name: 'docs-deploy'
 
 on:
   push:
