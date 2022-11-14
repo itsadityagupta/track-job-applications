@@ -82,6 +82,9 @@ poetry shell
 * After making the changes, run `mkdocs server` to see a live preview of the docs.
 * If everything looks fine, raise a PR.
 
+> *Note: Any changes in [CONTRIBUTING.md](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/CONTRIBUTING.md) has to be replicated [here](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/docs/CONTRIBUTING.md) and vice-versa.*
+> *Similarly, any changes in [README.md](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/README.md) has to replicated to [index.md](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/docs/index.md) and vice-versa.*
+
 ## Pre-commit hooks
 
 Various pre-commit hooks are executed before every commit to maintain code quality. Here's a list of them:
