@@ -35,7 +35,7 @@ and deployed on [GitHub Pages](https://docs.github.com/en/pages/getting-started-
 
 You can find the documentation here: [https://aditya-gupta1.github.io/track-job-applications/](https://aditya-gupta1.github.io/track-job-applications/)
 
->Markdown files that generates documentation are in `docs` folder. The website elements are generated from `docs` folder and moved to `gh-dpeloy` branch. It is from here that the gtihub pages picks up the files for deployment.
+>Markdown files that generates documentation are in `docs` folder. The website elements are generated from `docs` folder and moved to `gh-deploy` branch. It is from here that the GitHub pages picks up the files for deployment.
 
 ## Installation
 
