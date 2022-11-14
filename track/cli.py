@@ -91,6 +91,9 @@ def ls(
     end_date: Optional[str] = typer.Option(
         None, "--end-date", "-e", help="End date in YYYY-MM-DD"
     ),
+    status: Optional[str] = typer.Option(
+        None, "--status", "-st", help="Filter applications by status"
+    ),
 ):
     """
     Lists all the job applications present in the database. (or within a specified date range, if given)
@@ -98,6 +101,7 @@ def ls(
     Args:
         start_date: Start date to display applications (default: None)
         end_date: End date to display applications (default: None)
+        status: Filter the applications by status (default: None). Find possible values [here][track.app_constants.from_string]
 
     Examples:
         >>>track-job ls //displays all the applications
@@ -106,7 +110,7 @@ def ls(
     Notes:
         In case the start and the end dates are given, the applications are filtered using the `applied_at` field.
     """
-    get_tracker().list(start_date, end_date)
+    get_tracker().list(start_date, end_date, status)
     # TODO: add start and end date along with the status (to filter with the given status)
 
 

@@ -28,48 +28,6 @@ class DBHandler:
         return application.id
         # TODO: throw relevant exception
 
-    def get_all_applications(
-        self,
-        start_date: Optional[str] = None,
-        end_date: Optional[str] = None,
-        get_counts: bool = False,
-    ):
-        """Queries database to get all the job applications"""
-        if start_date is not None and end_date is not None:
-            start_date = app_functions.parse_date(start_date)
-            end_date = app_functions.parse_date(end_date)
-            app_functions.validate_dates(start_date, end_date)
-            if get_counts:
-                return (
-                    self.__db.session.query(JobApplication)
-                    .filter(
-                        JobApplication.applied_at >= start_date,
-                        JobApplication.applied_at <= end_date,
-                    )
-                    .count()
-                )
-            else:
-                return (
-                    self.__db.session.query(JobApplication)
-                    .filter(
-                        JobApplication.applied_at >= start_date,
-                        JobApplication.applied_at <= end_date,
-                    )
-                    .order_by(JobApplication.applied_at)
-                    .all()
-                )
-        elif start_date is None and end_date is None:
-            if get_counts:
-                return self.__db.session.query(JobApplication).count()
-            else:
-                return (
-                    self.__db.session.query(JobApplication)
-                    .order_by(JobApplication.applied_at)
-                    .all()
-                )
-        # TODO: Another way is to return only job ids. But check if it's feasible
-        # TODO: throw relevant exception
-
     def delete_job_application(self, application_id: int) -> int:
         """Deletes job application with the given application id."""
         application = (
@@ -142,54 +100,88 @@ class DBHandler:
         )
         self.__db.session.commit()
 
-    def get_applications_by_status(
+    def get_all_applications(
         self,
-        status: str,
         start_date: Optional[str] = None,
         end_date: Optional[str] = None,
+        status: Optional[str] = None,
         get_counts: bool = False,
     ):
         """Get the application counts for the given status and given date"""
-        status = app_constants.from_string(status)
         if start_date is not None and end_date is not None:
             start_date = app_functions.parse_date(start_date)
             end_date = app_functions.parse_date(end_date)
             app_functions.validate_dates(start_date, end_date)
             if get_counts:
-                return (
-                    self.__db.session.query(JobApplication)
-                    .filter(
-                        JobApplication.status == status.value,
-                        start_date <= JobApplication.applied_at,
-                        JobApplication.applied_at <= end_date,
+                if status is not None:
+                    status = app_constants.from_string(status)
+                    return (
+                        self.__db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status == status.value,
+                            start_date <= JobApplication.applied_at,
+                            JobApplication.applied_at <= end_date,
+                        )
+                        .count()
                     )
-                    .count()
-                )
+                else:
+                    return (
+                        self.__db.session.query(JobApplication)
+                        .filter(
+                            start_date <= JobApplication.applied_at,
+                            JobApplication.applied_at <= end_date,
+                        )
+                        .count()
+                    )
             else:
-                return (
-                    self.__db.session.query(JobApplication)
-                    .filter(
-                        JobApplication.status == status.value,
-                        start_date <= JobApplication.applied_at,
-                        JobApplication.applied_at <= end_date,
+                if status is not None:
+                    status = app_constants.from_string(status)
+                    return (
+                        self.__db.session.query(JobApplication)
+                        .filter(
+                            JobApplication.status == status.value,
+                            start_date <= JobApplication.applied_at,
+                            JobApplication.applied_at <= end_date,
+                        )
+                        .order_by(JobApplication.applied_at)
+                        .all()
                     )
-                    .order_by(JobApplication.applied_at)
-                    .all()
-                )
+                else:
+                    return (
+                        self.__db.session.query(JobApplication)
+                        .filter(
+                            start_date <= JobApplication.applied_at,
+                            JobApplication.applied_at <= end_date,
+                        )
+                        .order_by(JobApplication.applied_at)
+                        .all()
+                    )
         elif start_date is None and end_date is None:
             if get_counts:
-                return (
-                    self.__db.session.query(JobApplication)
-                    .filter(JobApplication.status == status.value)
-                    .count()
-                )
+                if status is not None:
+                    status = app_constants.from_string(status)
+                    return (
+                        self.__db.session.query(JobApplication)
+                        .filter(JobApplication.status == status.value)
+                        .count()
+                    )
+                else:
+                    return self.__db.session.query(JobApplication).count()
             else:
-                return (
-                    self.__db.session.query(JobApplication)
-                    .filter(JobApplication.status == status.value)
-                    .order_by(JobApplication.applied_at)
-                    .all()
-                )
+                if status is not None:
+                    status = app_constants.from_string(status)
+                    return (
+                        self.__db.session.query(JobApplication)
+                        .filter(JobApplication.status == status.value)
+                        .order_by(JobApplication.applied_at)
+                        .all()
+                    )
+                else:
+                    return (
+                        self.__db.session.query(JobApplication)
+                        .order_by(JobApplication.applied_at)
+                        .all()
+                    )
 
     def get_shortlisted(
         self,

@@ -35,7 +35,7 @@ class Reporter:
         end_date: Optional[str] = None,
     ):
         """Fetches the number of applications for a given status within a given date range"""
-        return self.db_handler.get_applications_by_status(
+        return self.db_handler.get_all_applications(
             status=status,
             start_date=start_date,
             end_date=end_date,
@@ -60,7 +60,7 @@ class Reporter:
         if jobs_applied == 0:
             return "-1"
 
-        jobs_rejected = self.db_handler.get_applications_by_status(
+        jobs_rejected = self.db_handler.get_all_applications(
             status=Status.REJECTED.value(),
             start_date=start_date,
             end_date=end_date,

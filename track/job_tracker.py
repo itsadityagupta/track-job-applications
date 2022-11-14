@@ -32,11 +32,14 @@ class JobTracker:
         return self.db_handler.add_job_application(application)
 
     def list(
-        self, start_date: Optional[str] = None, end_date: Optional[str] = None
+        self,
+        start_date: Optional[str] = None,
+        end_date: Optional[str] = None,
+        status: Optional[str] = None,
     ):
         """Prints all the job applications present in the database"""
         applications = self.db_handler.get_all_applications(
-            start_date, end_date
+            start_date, end_date, status
         )
         app_functions.print_applications(applications)
         return len(applications)
