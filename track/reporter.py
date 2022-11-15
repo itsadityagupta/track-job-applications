@@ -61,7 +61,7 @@ class Reporter:
             return "-1"
 
         jobs_rejected = self.db_handler.get_all_applications(
-            status=Status.REJECTED.value(),
+            status=Status.REJECTED.value,
             start_date=start_date,
             end_date=end_date,
             get_counts=True,
@@ -106,7 +106,7 @@ class Reporter:
             f"Total Applications = {self.total_counts(start_date, end_date)}"
         )
         typer.secho(
-            f"Rejected Applications = {self.status_counts(Status.REJECTED.value(), start_date, end_date)}"
+            f"Rejected Applications = {self.status_counts(Status.REJECTED.value, start_date, end_date)}"
         )
         typer.secho(
             f"Shortlisted Applications = {self.shortlisted_counts(start_date, end_date)}"

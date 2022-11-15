@@ -26,6 +26,7 @@ And the list goes on.
 * [Installation](#installation)
 * [Getting Started](#getting-started)
 * [Contributing](#contributing)
+* [Reach out](#reach-out)
 * [License](#license)
 
 ## Documentation
@@ -84,6 +85,10 @@ Refer to the [commands](Commands.md) section for the list of commands available.
 
 Contributions for docs as well as code are welcomed. Head over to the [Contributing](https://github.com/Aditya-Gupta1/track-job-applications/blob/main/CONTRIBUTING.md) 
 guidelines for steps to set up a development environment, contributing to code and contributing to docs.
+
+## Reach out
+
+Feel free to start a [discussion](https://github.com/Aditya-Gupta1/track-job-applications/discussions) on anything you want to suggest or have more clarity on.
 
 ## License
 
