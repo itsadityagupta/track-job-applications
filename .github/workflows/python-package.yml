@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a variety of Python versions
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: 'Tests'
+name: 'Build'
 
 on:
   push:
@@ -11,12 +11,8 @@ on:
 
 jobs:
   build:
-    name: Tests
+    name: Build
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.9", "3.10"]
 
     steps:
     - uses: actions/checkout@v3
@@ -35,5 +31,11 @@ jobs:
     - name: Install dependencies
       if: steps.cached-poetry-dependencies.outputs.cache-hit != 'true'
       run: poetry install
+    - name: Lint with Flake8
+      run: poetry run flake8 .
+    - name: Check formatting using Black
+      run: poetry run black --check --verbose .
+    - name: Check docstrings using Interrogate
+      run: poetry run interrogate -vv
     - name: Test with pytest
       run: poetry run pytest
