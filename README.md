@@ -1,4 +1,4 @@
-# Track Job Applications Docs
+# Track Job Applications
 
 A CLI application to help you track job applications and provide metrics on them.
 
@@ -35,8 +35,6 @@ The documentation for this project is created using [Mkdocs](https://www.mkdocs.
 and deployed on [GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/about-github-pages).
 
 You can find the documentation here: https://aditya-gupta1.github.io/track-job-applications/
-
->Markdown files that generates documentation are in `docs` folder. The website elements are generated from `docs` folder and moved to `gh-deploy` branch. It is from here that the GitHub pages picks up the files for deployment.
 
 ## Installation
 
