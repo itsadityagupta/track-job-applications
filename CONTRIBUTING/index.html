@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aditya Gupta">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Contributing - Track Job Applications</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/obsidian.min.css">
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Track Job Applications</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../Commands/" class="nav-link">Commands</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../References/" class="nav-link">References</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Contributing</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../LICENSE/" class="nav-link">License</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href="../References/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../LICENSE/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Aditya-Gupta1/track-job-applications/tree/main/docs/CONTRIBUTING.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#contributing-to-job-application-cli" class="nav-link">Contributing to Job Application CLI</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#quicklinks" class="nav-link">Quicklinks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#code-of-conduct" class="nav-link">Code of Conduct</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#getting-started" class="nav-link">Getting Started</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#setting-up-the-development-environment" class="nav-link">Setting up the development environment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pre-commit-hooks" class="nav-link">Pre-commit hooks</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="contributing-to-job-application-cli">Contributing to Job Application CLI<a class="headerlink" href="#contributing-to-job-application-cli" title="Permanent link">#</a></h1>
+<p>A big welcome and thank you for considering contributing to this project!</p>
+<p>Reading and following these guidelines will help us make the contribution process easy and effective for everyone involved. It also communicates that you agree to respect the time of the developers managing and developing these open source projects. In return, we will reciprocate that respect by addressing your issue, assessing changes, and helping you finalize your pull requests.</p>
+<h2 id="quicklinks">Quicklinks<a class="headerlink" href="#quicklinks" title="Permanent link">#</a></h2>
+<ul>
+<li><a href="#code-of-conduct">Code of Conduct</a></li>
+<li><a href="#getting-started">Getting Started</a><ul>
+<li><a href="#issues">Issues</a></li>
+<li><a href="#pull-requests">Pull Requests</a></li>
+</ul>
+</li>
+<li><a href="#setting-up-the-development-environment">Setting up the development environment</a></li>
+<li><a href="#contributing-to-code">Contributing to Code</a></li>
+<li><a href="#contributing-to-docs">Contributing to Docs</a></li>
+<li><a href="#pre-commit-hooks">Pre-commit hooks</a></li>
+</ul>
+<h2 id="code-of-conduct">Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permanent link">#</a></h2>
+<p>We take our open source community seriously and hold ourselves and other contributors to high standards of communication. By participating and contributing to this project, you agree to uphold our <a href="https://github.com/Aditya-Gupta/job-application-cli/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a>.</p>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">#</a></h2>
+<p>Contributions are made to this repo via Issues and Pull Requests (PRs). A few general guidelines that cover both:</p>
+<ul>
+<li>Search for existing Issues and PRs before creating your own.</li>
+<li>We work hard to makes sure issues are handled in a timely manner but, depending on the impact, it could take a while to investigate the root cause. A friendly ping in the comment thread to the submitter or a contributor can help draw attention if your issue is blocking.</li>
+</ul>
+<h3 id="issues">Issues<a class="headerlink" href="#issues" title="Permanent link">#</a></h3>
+<p>Issues should be used to report problems with the library, request a new feature, or to discuss potential changes before a PR is created. When you create a new Issue, a template will be loaded that will guide you through collecting and providing the information we need to investigate.</p>
+<p>If you find an Issue that addresses the problem you're having, please add your own reproduction information to the existing issue rather than creating a new one. Adding a <a href="https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/">reaction</a> can also help be indicating to our maintainers that a particular problem is affecting more than just the reporter.</p>
+<h3 id="pull-requests">Pull Requests<a class="headerlink" href="#pull-requests" title="Permanent link">#</a></h3>
+<p>PRs are always welcome and can be a quick way to get your fix or improvement slated for the next release. In general, PRs should:</p>
+<ul>
+<li>Only fix/add the functionality in question <strong>OR</strong> address wide-spread whitespace/style issues, not both.</li>
+<li>Add unit or integration tests for fixed or changed functionality (if a test suite already exists).</li>
+<li>Address a single concern in the least number of changed lines as possible.</li>
+<li>Be accompanied by a complete Pull Request template (loaded automatically when a PR is created).</li>
+</ul>
+<p>For changes that address core functionality or would require breaking changes (e.g. a major release), it's best to open an Issue to discuss your proposal first. This is not required but can save time creating and reviewing changes.</p>
+<p>In general, we follow the <a href="https://github.com/susam/gitpr">"fork-and-pull" Git workflow</a></p>
+<ol>
+<li>Fork the repository to your own GitHub account</li>
+<li>Clone the project to your machine</li>
+<li>Create a branch locally with a succinct but descriptive name</li>
+<li>Commit changes to the branch</li>
+<li>Following any formatting and testing guidelines specific to this repo</li>
+<li>Push changes to your fork</li>
+<li>Open a PR in our repository and follow the PR template so that we can efficiently review the changes.</li>
+</ol>
+<h2 id="setting-up-the-development-environment">Setting up the development environment<a class="headerlink" href="#setting-up-the-development-environment" title="Permanent link">#</a></h2>
+<ol>
+<li>Install <a href="https://python-poetry.org/docs/#installation">Poetry</a>. Make sure to add it to the path as mentioned in the documentation.</li>
+<li>Run the following commands:</li>
+</ol>
+<pre><code class="language-commandline">git clone https://github.com/Aditya-Gupta1/track-job-applications.git
+cd track-job-applications
+poetry install
+poetry shell
+</code></pre>
+<ol>
+<li>Poetry will spin up a shell where all the commands for the application can be executed and tested.</li>
+<li>Once inside the shell, run <code>pre-commit install</code>.</li>
+</ol>
+<h3 id="contributing-to-code">Contributing to Code<a class="headerlink" href="#contributing-to-code" title="Permanent link">#</a></h3>
+<ul>
+<li>Make the necessary code changes as per the issue worked upon.</li>
+<li>Inside the poetry shell, run the command and ensure it's working as expedted.</li>
+<li>Add test cases in the <code>tests</code> folder and run it using <a href="https://docs.pytest.org/en/7.2.x/">Pytest</a>.</li>
+<li>Once the tests are running and the changes are working fine, raise a PR.</li>
+</ul>
+<h3 id="contributing-to-docs">Contributing to Docs<a class="headerlink" href="#contributing-to-docs" title="Permanent link">#</a></h3>
+<ul>
+<li>Docs templates are present in the <code>docs</code> folder. The markdown files present in the folder are compiled by mkdocs as per the configuration mentioned in the <a href="">mkdocs.yml</a> file.</li>
+<li>If you need to modify the existing documentation for a method or a class, just modify its docstring in the source code.</li>
+<li>If you need to add documentation for a new method or a class:</li>
+<li>add docstrings to them in <a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">google style</a>.</li>
+<li>add the method's or class's path from repository root prefixed by <code>:::</code> in any of the markdown files present in the <code>docs</code> folder. (You can take reference of how other entities are mentioned there)</li>
+<li>After making the changes, run <code>mkdocs server</code> to see a live preview of the docs.</li>
+<li>If everything looks fine, raise a PR.</li>
+</ul>
+<h2 id="pre-commit-hooks">Pre-commit hooks<a class="headerlink" href="#pre-commit-hooks" title="Permanent link">#</a></h2>
+<p>Various pre-commit hooks are executed before every commit to maintain code quality. Here's a list of them:
+* <a href="https://github.com/psf/black">Black</a>
+* <a href="https://flake8.pycqa.org/en/latest/">Flake</a>
+* <a href="https://pycqa.github.io/isort/">Isort</a>
+* <a href="https://interrogate.readthedocs.io/en/latest/">Interrogate</a>
+* <a href="https://python-poetry.org/docs/master/pre-commit-hooks/#poetry-check">Poetry Check</a>
+* <a href="https://python-poetry.org/docs/master/pre-commit-hooks/#poetry-lock">Poetry Lock</a>
+* <a href="https://python-poetry.org/docs/master/pre-commit-hooks/#poetry-export">Poetry Export</a></p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2022 <a href="https://twitter.com/itsadityagupta">Aditya Gupta</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

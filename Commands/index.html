@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="author" content="Aditya Gupta">
+        
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Commands - Track Job Applications</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/obsidian.min.css">
+        <link href="../assets/_mkdocstrings.css" rel="stylesheet">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Track Job Applications</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Introduction</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Commands</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../References/" class="nav-link">References</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../CONTRIBUTING/" class="nav-link">Contributing</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../LICENSE/" class="nav-link">License</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../References/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/Aditya-Gupta1/track-job-applications/tree/main/docs/Commands.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#commands" class="nav-link">Commands</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#track.cli.get_version" class="nav-link">track.cli.get_version</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.cli.add" class="nav-link">track.cli.add</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.cli.ls" class="nav-link">track.cli.ls</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.cli.rm" class="nav-link">track.cli.rm</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.update_cli.company" class="nav-link">track.update_cli.company</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.update_cli.position" class="nav-link">track.update_cli.position</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.update_cli.status" class="nav-link">track.update_cli.status</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.update_cli.applied_at" class="nav-link">track.update_cli.applied_at</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.report_cli.default" class="nav-link">track.report_cli.default</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.report_cli.counts" class="nav-link">track.report_cli.counts</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.report_cli.status" class="nav-link">track.report_cli.status</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#track.report_cli.shortlisted" class="nav-link">track.report_cli.shortlisted</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="commands">Commands<a class="headerlink" href="#commands" title="Permanent link">#</a></h1>
+<p>Track Job Applications support basic commands to add, delete or update the job applications. Apart from it, it also has the ability to generate a basic report which gives some insights on the applications saved.</p>
+<blockquote>
+<p>Note: By default, all the commands are executed on the entire data. In order to run it on the subset of applications, <code>--start-date</code> and <code>--end-date</code> can be given in <code>YYYY-MM-DD</code> format to perform the operations for application that have the <code>applied_at</code> date between this range (inclusive).</p>
+</blockquote>
+<p>All the commands mentioned henceforth have a <code>--help</code> flag that can be used to get information about them.</p>
+<h3 id="basic-commands">Basic Commands<a class="headerlink" href="#basic-commands" title="Permanent link">#</a></h3>
+<h4 id="-v-version">-v/--version<a class="headerlink" href="#-v-version" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.cli.get_version"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Displays application version.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>version</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[bool]</code>
+          </td>
+          <td><p>-v or --version flag</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--version&#39;, &#39;-v&#39;, help=&#34;Show the application&#39;s version and exit.&#34;, callback=_version_callback, is_eager=True)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job --version</span>
+<span class="go">&gt;&gt;&gt;track-job -v</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="add">add<a class="headerlink" href="#add" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.cli.add"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Adds a job application.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>company</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Company name applied to.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;Company applied to&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>position</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Job Post applied to.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;Position applied for&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>applied_at</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Date on which the application was submitted for the given job posting in YYYY-MM-DD format.
+(default: current date)</p></td>
+          <td>
+                <code>typer.Option(datetime.date(datetime.now()).isoformat(), &#39;--applied-at&#39;, &#39;-a&#39;, help=&#39;Date applied at [YYYY-MM-DD]&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>status</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Application status. For all possible values, check <a class="autorefs autorefs-internal" href="../References/#track.app_constants.Status"><code>Status</code></a>. (default: <code>APPLIED</code>)</p></td>
+          <td>
+                <code>typer.Option(&#39;APPLIED&#39;, &#39;--status&#39;, &#39;-s&#39;, help=&#39;Current status of the application&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job add Company1 Position1</span>
+<span class="go">&gt;&gt;&gt;track-job add Company1 Position2 --applied-at 2022-11-10 --status tech</span>
+<span class="go">&gt;&gt;&gt;track-job add Company1 Position2 -a 2022-11-10 -s offer</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="ls">ls<a class="headerlink" href="#ls" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.cli.ls"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Lists all the job applications present in the database. (or within a specified date range, if given)</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>start_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Start date to display applications (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--start-date&#39;, &#39;-s&#39;, help=&#39;Start date in YYYY-MM-DD&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>end_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>End date to display applications (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--end-date&#39;, &#39;-e&#39;, help=&#39;End date in YYYY-MM-DD&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>status</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Filter the applications by status (default: None). Find possible values <a class="autorefs autorefs-internal" href="../References/#track.app_constants.from_string">here</a></p></td>
+          <td>
+                <code>typer.Option(None, &#39;--status&#39;, &#39;-st&#39;, help=&#39;Filter applications by status&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job ls //displays all the applications</span>
+<span class="go">&gt;&gt;&gt;track-job ls -s 2022-10-12 -e 2022-11-12 //displays all the applications from 2022-10-12 to 2022-11-12</span>
+</code></pre></div>
+
+<details class="notes">
+  <summary>Notes</summary>
+  <p>In case the start and the end dates are given, the applications are filtered using the <code>applied_at</code> field.</p>
+</details>
+  </div>
+
+</div><h4 id="rm">rm<a class="headerlink" href="#rm" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.cli.rm"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Deletes the job application with the given id.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>application_id</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>ID of an application to be deleted.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;ID for job application you want to delete&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job rm 1 //deletes application having ID 1</span>
+</code></pre></div>
+
+<details class="notes">
+  <summary>Notes</summary>
+  <p>The application id can be found using the <a class="autorefs autorefs-internal" href="#track.cli.ls">ls</a> command.</p>
+</details>
+  </div>
+
+</div><h3 id="update-commands">Update Commands<a class="headerlink" href="#update-commands" title="Permanent link">#</a></h3>
+<h4 id="update-company">update company<a class="headerlink" href="#update-company" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.update_cli.company"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Updates the company name in the application with the given ID.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>application_id</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Application ID for which to update company name.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;ID for job application you want to update&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>company</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>New company name to be updated.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;Company name&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job update company 1 newCompany</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="update-position">update position<a class="headerlink" href="#update-position" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.update_cli.position"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Updates the position in the application with the given ID.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>application_id</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Application ID for which to update the position.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;ID for job application you want to update&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>position</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>New position to be updated.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;Position applied for&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job update position 1 SDE-3</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="update-status">update status<a class="headerlink" href="#update-status" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.update_cli.status"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Updates the status of the application with the given ID.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>application_id</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Application ID for which to update the status.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;ID for job application you want to update&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>status</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>Status to be updated.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;Status of the application&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job update status 1 offer</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="update-applied_at">update applied_at<a class="headerlink" href="#update-applied_at" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.update_cli.applied_at"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Updates the applied_at date in the application with the given ID.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>application_id</code></td>
+          <td>
+                <code>int</code>
+          </td>
+          <td><p>Application ID for which to update the <code>applied_at</code> date.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;ID for job application you want to update&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>date</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>New <code>applied_at</code> date value.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;Date at which applied for the application&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job update applied_at 1 2022-11-10</span>
+</code></pre></div>
+
+  </div>
+
+</div><h3 id="report-commands">Report Commands<a class="headerlink" href="#report-commands" title="Permanent link">#</a></h3>
+<h4 id="report">report<a class="headerlink" href="#report" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.report_cli.default"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Generate a report for all the applications (or in the given date range). This is called implicitly when no sub-command is provided to the <code>report</code> command.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>ctx</code></td>
+          <td>
+                <code>typer.<span title="typer.Context">Context</span></code>
+          </td>
+          <td><p>Typer context. Provided by typer implicitly.</p></td>
+          <td>
+              <em>required</em>
+          </td>
+        </tr>
+        <tr>
+          <td><code>start_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Start date to filter applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--start-date&#39;, &#39;-s&#39;, help=&#39;start date&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>end_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>End date to filter applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--end-date&#39;, &#39;-e&#39;, help=&#39;end date&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job report //generates report for all the applications</span>
+<span class="go">&gt;&gt;&gt;track-job report -s 2022-10-12 -e 2022-11-12 //for the given date range</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="counts">counts<a class="headerlink" href="#counts" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.report_cli.counts"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Get the total number of applications, or within a given date range.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>start_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Start date to count applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--start-date&#39;, &#39;-s&#39;, help=&#39;Start counting the applications from this date&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>end_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>End date to count applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--end-date&#39;, &#39;-e&#39;, help=&#39;Count the applications made till this date&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job report counts //count of all the applications present</span>
+<span class="go">&gt;&gt;&gt;track-job report counts -s 2022-10-12 -e 2022-11-12</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="status">status<a class="headerlink" href="#status" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.report_cli.status"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Get the counts of application for the given status in the given time range. By default, it'll count all the applications with the given status.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>status</code></td>
+          <td>
+                <code>str</code>
+          </td>
+          <td><p>The Status for which to calculate the application counts. See <a class="autorefs autorefs-internal" href="../References/#track.app_constants.Status">Status</a> for possible valyes.</p></td>
+          <td>
+                <code>typer.Argument(Ellipsis, help=&#39;Status of the application&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>start_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Start date to count applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--start-date&#39;, &#39;-s&#39;, help=&#39;Start counting the applications from this date&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>end_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>End date to count applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--end-date&#39;, &#39;-e&#39;, help=&#39;Count the applications made till this date&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job report status applied</span>
+<span class="go">&gt;&gt;&gt;track-job report status tech-interview -s 2022-10-12 -e 2022-11-12</span>
+</code></pre></div>
+
+  </div>
+
+</div><h4 id="shortlisted">shortlisted<a class="headerlink" href="#shortlisted" title="Permanent link">#</a></h4>
+
+
+<div class="doc doc-object doc-function">
+
+
+<a id="track.report_cli.shortlisted"></a>
+  <div class="doc doc-contents first">
+  
+      <p>Gets the number of shortlisted applications within a given time range.</p>
+
+  <p><strong>Parameters:</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Default</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr>
+          <td><code>start_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>Start date to count applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--start-date&#39;, &#39;-s&#39;, help=&#39;Start counting the applications from this date&#39;)</code>
+          </td>
+        </tr>
+        <tr>
+          <td><code>end_date</code></td>
+          <td>
+                <code><span title="typing.Optional">Optional</span>[str]</code>
+          </td>
+          <td><p>End date to count applications. (default: None)</p></td>
+          <td>
+                <code>typer.Option(None, &#39;--end-date&#39;, &#39;-e&#39;, help=&#39;Count the applications made till this date.&#39;)</code>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+
+<p><strong>Examples:</strong></p>
+    <div class="highlight"><pre><span></span><code><span class="go">&gt;&gt;&gt;track-job report shortlisted</span>
+<span class="go">&gt;&gt;&gt;track-job report shortlisted -s 2022-10-12 -e 2022-11-12</span>
+</code></pre></div>
+
+<details class="notes">
+  <summary>Notes</summary>
+  <p>Any application which has a status other than <code>Applied</code> and <code>Rejected</code> will be considered as shortlisted.</p>
+</details>
+  </div>
+
+</div></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+                <p>Copyright &copy; 2022 <a href="https://twitter.com/itsadityagupta">Aditya Gupta</a></p>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+
+        <div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
