@@ -70,7 +70,7 @@ isort = "^5.10.1"
 interrogate = "^1.5.0"
 flake8 = "^5.0.4"
 pytest = "7.2.0"
-faker = "15.1.1"
+faker = "18.3.1"
 pytest-mock = "3.10.0"
 coverage = "6.5.0"
 
